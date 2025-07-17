@@ -3,14 +3,13 @@
 #include <stdlib.h>
 #include <signal.h>
 
-#define END_TRANSMISSION '\0'
+//#define END_TRANSMISSION '\0'
 
 //debe lanzarse primero
 // Debe mostrar su PID		
 // Recibe string
 // Muestra string
 // Debe ser muy rapido, muy  rapido
-	// Debe recibir strings de diferentes clientes consecutivamente sin reiniciar
 // La comunicacion se hace SOLO con senales UNIX
 
 /*
@@ -29,45 +28,36 @@ char	btoi(char	*signal, char zero)
 
 	i = 7;
 	multiplier = 1;
-
 	while (multiplier >= 0)
 	{
 		character = character + ((signal[i] - zero) * multiplier);
-		multiplier =  multiplier * 2;
+		multiplier = multiplier * 2;
 		i--;
 	}
 	return (character);
 }
 
-void	handle1()
+void	signal_handler(void)
 {
-	write(STDOUT_FILENO,"signal 1 received\n", 17);
-
+	write (STDOUT_FILENO, "signal 1 received\n", 17);
+	write(STDOUT_FILENO, "signal 2 received\n", 17);
 }
 
-void	handle2()
+void	handle_interrupt(void)
 {
-	write(STDOUT_FILENO,"signal 2 received\n", 17);
-}
-
-void	handle_interrupt()
-{
-	write(STDOUT_FILENO,"interrupt received\n", 19);
+	write (STDOUT_FILENO, "interrupt received\n", 19);
 	exit(0);
 }
 
-int	main()
+int	main(void)
 {
+	pid_t	pid;
 
 	signal(SIGINT, handle_interrupt);
 	signal(SIGUSR1, handle1);
 	signal(SIGUSR2, handle2);
-
-	pid_t	pid;
-
-	// define el pid y lo imprime
 	pid = getpid();
-	printf("PID = %i\n", pid);	
+	printf("PID = %i\n", pid);
 	while (1)
 	{
 		sleep(1);

@@ -1,37 +1,10 @@
 #include <stdio.h>
 #include <signal.h>
 #include <string.h>
-#include "./libft/libft.h"
+#include "libft/libft.h"
 #include "ft_printf/ft_printf.h"
-
-
-
-// Se lanza despues
-// Toma como parametros: PID del server, string que deberia mandarse
-// Comunica string del parametro al servidor
-// Solo senales unix
-// solo senales SIGUSR1 y SIGUSR2
-
-/* 
- * - [ ] make a main that takes pid of the server it wants to send the message to
- * - [ ] The message
- * - [ ] Encript the message
- * - [ ] Send the message to the server via PID
- * yo esto como lo hago??
- * - [ ] Create a stop condition so that the server knows when it has finished
-		 * Para esto, hago un mensaje especial de parada o hay algo determinado ya?
-			receiving the message. 
-
-
 #include <stdio.h>
 
-int main()
-{
-	printf("yyeah buddy");
-	return (0);
-}
-
-*/
 /*
  *	send
  * Send a message to a specified PID, encoded with SIGUSR 1 and 2
@@ -48,7 +21,7 @@ int	send(pid_t pid, char sig1, char sig2, char *str)
 	i = 0;
 	while (str[i])
 	{
-	if (str[i] == sig1)
+		if (str[i] == sig1)
 			kill(pid, SIGUSR1);
 		else if (str[i] == sig2)
 			kill(pid, SIGUSR2);
@@ -66,7 +39,6 @@ char	*itob(char c)
 	result = malloc(sizeof(char) * 9);
 	if (!result)
 		return (NULL);
-
 	result[8] = 0;
 	position = 7;
 	remainder = c;
@@ -84,6 +56,7 @@ char	*itob(char c)
 	}
 	return (result);
 }
+
 // puede que fuese mejor usar append en este caso... probare de las dos maneras
 char	*encoder(char *str)
 {
@@ -111,9 +84,9 @@ char	*encoder(char *str)
 
 void	error_message(int errno)
 {
-	printf("ERROR:\n");
+	ft_printf("ERROR:\n");
 	if (errno == 1)
-		printf("- Missing parameters\n");
+		ft_printf("- Missing parameters\n");
 }
 
 int	main(int argc, char *argv[])
@@ -127,8 +100,5 @@ int	main(int argc, char *argv[])
 	msg = encoder(argv[2]);
 	send(pid, SIGUSR1, SIGUSR2, msg);
 	free(msg);
-		// comprueba que el PID sea correcto?
-	// cifra el mensaje
-	// para cada 0 envia SIGUSR2 y para 1 SIGUSR1
 	return (0);
 }

@@ -41,21 +41,6 @@ void	is_min(int *n, size_t *len, int *min, unsigned int *num)
 		(*num) = (*n);
 }
 
-int	ft_int_len(int i)
-{
-	int	len;
-
-	if (i == 0)
-		return (1);
-	len = 0;
-	while (i)
-	{
-		len++;
-		i /= 10;
-	}
-	return (len);
-}
-
 char	*ft_itoa(int i, char *str)
 {
 	int			len;
