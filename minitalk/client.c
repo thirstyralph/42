@@ -1,43 +1,10 @@
 #include <stdio.h>
 #include <signal.h>
-#include <stdlib.h>
 #include <string.h>
-#include <sys/types.h>
+#include "./libft/libft.h"
+#include "ft_printf/ft_printf.h"
 
 
-char *ft_strjoin(const char *s1, const char *s2)
-{
-    char	*res;
-	int		size;
-    int		i;
-    int		j;
-
-    i = 0;
-    j = 0;
-	size = 1;
-	if (!s1 && !s2)
-		return (NULL);
-	if (s1)
-		size += strlen(s1);
-	if (s2)
-		size += strlen(s2);
-	res = (char *) malloc((size) * sizeof(char));
-	if (!res)
-		return (NULL);
-	if (s1)
-	{
-		while (s1[i])
-			res[j++] = s1[i++];
-	}
-    i = 0;
-	if (s2)
-	{
-		while (s2[i])
-			res[j++] = s2[i];
-	}
-    res[j] = 0;
-    return (res);
-}
 
 // Se lanza despues
 // Toma como parametros: PID del server, string que deberia mandarse
