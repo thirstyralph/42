@@ -5,100 +5,55 @@
 #include "ft_printf/ft_printf.h"
 #include <stdio.h>
 
-/*
- *	send
- * Send a message to a specified PID, encoded with SIGUSR 1 and 2
- * sig1: Char value to detect and send SIGUSR1
- * sig2: Char value to detect and send SIGUSR2
- * str:  String to read from
- * return value: Number of sent bits;
+/* Send
+ * Sends the binary balues of a given byte through system signals to a 
+ * specified PID.
+ * arguments:
+ * pid:	PID of the process we wish to comunicate to.
+ * c:	Character we are going to send.
+ * NOTES:
+	- Some people are using sleep, I don't really know why.
  */
-int	send(pid_t pid, char sig1, char sig2, char *str)
+void	send(pid_t pid, unsigned char c)
 {
-	int	i;
+	unsigned char	temp;
+	int				i;
 
-	i = 0;
-	i = 0;
-	while (str[i])
+	i = 8;
+	temp = c;
+	while (i > 0)
 	{
-		if (str[i] == sig1)
-			kill(pid, SIGUSR1);
-		else if (str[i] == sig2)
+		i--;
+		temp = c >> i;
+		if (temp % 2 == 0)
 			kill(pid, SIGUSR2);
-		i++;
+		else
+			kill(pid, SIGUSR1);
+		usleep(42);
 	}
-	return (i);
-}
-
-char	*itob(char c)
-{
-	char	*result;
-	int		remainder;
-	int		position;
-
-	result = malloc(sizeof(char) * 9);
-	if (!result)
-		return (NULL);
-	result[8] = 0;
-	position = 7;
-	remainder = c;
-	while (remainder >= 2)
-	{
-		result[position] = 48 + (remainder % 2);
-		remainder = remainder / 2;
-		position -= 1;
-	}
-	result[position] = '0' + (remainder % 2);
-	while (position > 0)
-	{
-		position -= 1;
-		result[position] = '0';
-	}
-	return (result);
-}
-
-// puede que fuese mejor usar append en este caso... probare de las dos maneras
-char	*encoder(char *str)
-{
-	int		i;
-	char	*message;
-	char	*letter;
-	char	*tmp;
-
-	i = 0;
-	if (!str)
-	{
-		return (NULL);
-	}
-	while (str[i])
-	{
-		letter = itob(str[i]);
-		tmp = ft_strjoin(message, letter);
-		message = tmp;
-		free(tmp);
-		free(letter);
-		i++;
-	}
-	return (message);
 }
 
 void	error_message(int errno)
 {
-	ft_printf("ERROR:\n");
+	ft_printf("ERROR:");
 	if (errno == 1)
-		ft_printf("- Missing parameters\n");
+		ft_printf("Usage: <PID> <message> \n");
 }
 
 int	main(int argc, char *argv[])
 {
 	char	*msg;
 	pid_t	pid;
+	int		i;
 
-	if (argc < 2)
+	i = 0;
+	if (argc != 3)
 		return (error_message(1), 1);
-	pid = atoi(argv[1]);
-	msg = encoder(argv[2]);
-	send(pid, SIGUSR1, SIGUSR2, msg);
-	free(msg);
+	pid = ft_atoi(argv[1]);
+	msg = argv[2];
+	ft_printf("Sending message to PID:%d\n", pid);
+	while (msg[i])
+		send(pid, msg[i++]);
+	send(pid, 0);
 	return (0);
 }

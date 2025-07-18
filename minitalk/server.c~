@@ -2,13 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
-#include "ft_printf/ft_printf.h"
-#include "libft/libft.h"
+
+//#define END_TRANSMISSION '\0'
 
 //debe lanzarse primero
 // Debe mostrar su PID		
 // Recibe string
-// Muestra string // Debe ser muy rapido, muy  rapido
+// Muestra string
+// Debe ser muy rapido, muy  rapido
 // La comunicacion se hace SOLO con senales UNIX
 
 /*
@@ -35,46 +36,47 @@ char	btoi(char	*signal, char zero)
 	}
 	return (character);
 }
-*/
 
-
-
-void	signal_handler(int sig)
+void	signal_handler()
 {
-	static unsigned char	current_char = 0;
-	static unsigned int		i = 0;
-
-	i++;
-	current_char = current_char << 1;
-	if (sig == SIGUSR1)
-		current_char++;
-	if (i >= 8)
-	{
-		i = 0;
-		ft_putchar(current_char);
-		if (current_char == 0)
-			exit(0);
-	}
+	write (STDOUT_FILENO, "signal 1 received\n", 17);
+	write(STDOUT_FILENO, "signal 2 received\n", 17);
 }
 
-void	handle_interrupt()
+void	handle_interrupt(void)
 {
 	write (STDOUT_FILENO, "interrupt received\n", 19);
 	exit(0);
 }
-
 int	main(void)
 {
 	pid_t	pid;
 
 	signal(SIGINT, handle_interrupt);
-	signal(SIGUSR1, signal_handler);
-	signal(SIGUSR2, signal_handler);
+	signal(SIGUSR1, handle1);
+	signal(SIGUSR2, handle2);
 	pid = getpid();
-	ft_printf("PID = %i\n", pid);
+	printf("PID = %i\n", pid);
 	while (1)
 	{
 		sleep(1);
 	}
 	return (0);
 }
+*/
+void	send(pid_t pid, unsigned char c)
+{
+	unsigned char	temp;
+
+	while (temp > 0)
+	{
+		if (temp % 2 == 1)
+			kill(pid, SIGUSR1);
+		else if (temp % 2 == 0)
+			kill(pid, SIGUSR2);
+		temp >>= 1;
+	}
+}
+
+int	main()
+
