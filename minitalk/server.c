@@ -5,40 +5,11 @@
 #include "ft_printf/ft_printf.h"
 #include "libft/libft.h"
 
-//debe lanzarse primero
-// Debe mostrar su PID		
-// Recibe string
-// Muestra string // Debe ser muy rapido, muy  rapido
-// La comunicacion se hace SOLO con senales UNIX
-
 /*
- * - [x] Display PID
- * - [ ] Create endless loop
- * - [ ] Receive signals
- * - [ ] Dcrypt signals
- * - [ ] take action for each signal received
-
-
-char	btoi(char	*signal, char zero)
-{
-	char	character;
-	int		i;
-	int		multiplier;
-
-	i = 7;
-	multiplier = 1;
-	while (multiplier >= 0)
-	{
-		character = character + ((signal[i] - zero) * multiplier);
-		multiplier = multiplier * 2;
-		i--;
-	}
-	return (character);
-}
-*/
-
-
-
+ * @brief: Turns the given signals into character values through
+ * bitwise operators.
+ * Sig: Signal that will be translated into binary values.
+ */
 void	signal_handler(int sig)
 {
 	static unsigned char	current_char = 0;
@@ -57,6 +28,9 @@ void	signal_handler(int sig)
 	}
 }
 
+/*
+ *	@brief: Prints an interrupt message and exits the program safely.
+ */
 void	handle_interrupt()
 {
 	write (STDOUT_FILENO, "interrupt received\n", 19);

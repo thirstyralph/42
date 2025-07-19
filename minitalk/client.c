@@ -6,13 +6,12 @@
 #include <stdio.h>
 
 /* Send
- * Sends the binary balues of a given byte through system signals to a 
+ * @brief: Sends the binary balues of a given byte through system signals to a 
  * specified PID.
  * arguments:
  * pid:	PID of the process we wish to comunicate to.
  * c:	Character we are going to send.
  * NOTES:
-	- Some people are using sleep, I don't really know why.
  */
 void	send(pid_t pid, unsigned char c)
 {
@@ -33,13 +32,6 @@ void	send(pid_t pid, unsigned char c)
 	}
 }
 
-void	error_message(int errno)
-{
-	ft_printf("ERROR:");
-	if (errno == 1)
-		ft_printf("Usage: <PID> <message> \n");
-}
-
 int	main(int argc, char *argv[])
 {
 	char	*msg;
@@ -48,7 +40,7 @@ int	main(int argc, char *argv[])
 
 	i = 0;
 	if (argc != 3)
-		return (error_message(1), 1);
+		return (ft_printf("Usage: <PID> <message> \n"), 1);
 	pid = ft_atoi(argv[1]);
 	msg = argv[2];
 	ft_printf("Sending message to PID:%d\n", pid);
