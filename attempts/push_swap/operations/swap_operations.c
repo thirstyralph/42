@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   swap_operations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 13:37:22 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/07/22 14:56:40 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/07/22 17:59:50 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/07/22 18:32:34 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "./../ft_printf/ft_printf.h"
+#include "./../libft/libft.h"
+#include "push_swap.h"
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "./ft_printf/ft_printf.h"
-# include "./libft/libft.h"
-
-typedef struct stack
-{
-	unsigned int	max_size;
-	int				top;
-	int				*items;
-}	t_stack;
-
-#endif
+void	swap_a(t_stack i)
