@@ -3,44 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ranavarr <ranavarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 15:50:24 by ranavarr          #+#    #+#             */
-/*   Updated: 2024/12/30 17:09:03 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/03/22 16:44:11 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/04/07 21:17:03 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+/*
+char	*ft_itoa(int i, char *str);
 
-size_t	take_len(unsigned int n)
+double	ft_pow(double base, int exponent)
 {
-	size_t	ret;
+	double	result;
 
-	ret = 0;
-	if (!n)
+	result = 1;
+	if (exponent == 0)
 		return (1);
-	while (n > 0)
+	if (exponent < 0)
 	{
-		n /= 10;
-		ret++;
+		base = 1 / base;
+		exponent = -exponent;
 	}
-	return (ret);
+	while (exponent > 0)
+	{
+		result *= base;
+		exponent--;
+	}
+	return (result);
 }
 
-void	is_min(int *n, size_t *len, int *min, unsigned int *num)
+int	first_digit(int n)
 {
-	*min = 0;
-	*len = 0;
-	if ((*n) < 0)
+	int	value;
+
+	value = n;
+	while (value >= 10)
 	{
-		(*num) = -1 * (*n);
-		*len = 1;
-		*min = 1;
+		value /= 10;
 	}
-	if (!((*n) < 0))
-		(*num) = (*n);
+	return (n);
 }
 
+int	limit_fix(long int n, int len, char *str)
+{
+	int	last_digit;
+	int	return_nbr;
+
+	last_digit = (n % -10);
+	str[len - 1] = last_digit + '0';
+	return_nbr = (n / -10);
+	return (return_nbr);
+}
+
+*/
 int	ft_int_len(int i)
 {
 	int	len;
@@ -84,29 +101,8 @@ char	*ft_itoa(int i, char *str)
 	return (str);
 }
 /*
-char	*ft_itoa(int n)
+int	main(void)
 {
-	size_t			len;
-	char			*ret;
-	int				min;
-	unsigned int	num;
-
-	is_min(&n, &len, &min, &num);
-	len += take_len(num);
-	ret = (char *)ft_calloc(1, len + 1);
-	if (!ret)
-		return (NULL);
-	ret[len] = 0;
-	if (!num)
-		ret[len - 1] = '0';
-	while (num > 0)
-	{
-		len--;
-		ret[len] = (num % 10) + '0';
-		num /= 10;
-	}
-	if (min)
-		ret[len - 1] = '-';
-	return (ret);
+	return (0);
 }
 */
