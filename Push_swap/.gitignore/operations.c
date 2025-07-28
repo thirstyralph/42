@@ -1,7 +1,8 @@
 #include "./libft/libft.h"
 #include "./ft_printf/ft_printf.h"
 #include "push_swap.h"
-
+#include <limits.h>
+/*
 int	isfull(t_stack stack)
 {
 	if (stack.top >= MAX_SIZE - 1)
@@ -25,7 +26,7 @@ void	push(t_stack *stack, int n)
 	stack->top++;
 	stack->arr[stack->top] = n;
 }
-
+*/
 void	swap(t_stack *stack, int n)
 {
 	int	temp;
@@ -36,7 +37,7 @@ void	swap(t_stack *stack, int n)
 	stack->arr[stack->top] = stack->arr[stack->top];
 	stack->arr[stack->top] = temp;
 }
-
+/*
 void	rotate(t_stack *stack)
 {
 	int	temp;
@@ -60,6 +61,7 @@ void	reverse_rotate(t_stack *stack)
 	stack->arr[0] = temp;
 }
 
+
 void	print_stack(t_stack stackA, t_stack stackB)
 {
 	int	i;
@@ -67,7 +69,8 @@ void	print_stack(t_stack stackA, t_stack stackB)
 	i = stackA.top;
 	while (i >= 0)
 	{
-		ft_printf("%d pos: %d || %d pos %d\n",stackA.arr[i], i, stackB.arr[i], i);
+		ft_printf("%d pos: %d || %d pos %d\n",stackA.arr[i], 
+				i, stackB.arr[i], i);
 		i--;
 	}
 }
@@ -109,3 +112,4 @@ int main(void)
 	swap(&stackA, &stackB);
 	print_stack(stackA, stackB);
 }
+*/

@@ -12,7 +12,7 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define MAX_SIZE 100
+# define MAX_SIZE INT_MAX
 # include "./ft_printf/ft_printf.h"
 # include "./libft/libft.h"
 
@@ -22,21 +22,24 @@ typedef struct stack
 	int	top;
 } t_stack;
 
-//operations
+
+// Parsing directory
 void	push(t_stack *stack, int n);
 void	rotate(t_stack *stack);
 void	reverse_rotate(t_stack *stack);
 void	swap(t_stack *stack, int n);
-//parsing.c
-int		size(double num);
-void	parse(char **str, int **tab, int *len);
-//stack_compare.c
-int		compare(int a, int j);
-//stack_check.c
+// Stack_check.c
 int		isfull(t_stack stack);
-int 	isempty(t_stack stack);
+int		isempty(t_stack stack);
 int		isordered(t_stack stack);
-//push_swap.c
-void	print_stack(t_stack stackA, t_stack stackB);
+// stack_compare.c
+int		compare(int a, int j);
+// parsing.c
+int		repeats(int	*tab, unsigned int len, int num);
+void	parse(char **str, int **tab, int **len);
+int		size(double num);
+int		not_int(char **str);
+
+
 
 #endif
