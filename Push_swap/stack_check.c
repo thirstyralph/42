@@ -24,13 +24,13 @@ int	isordered(t_stack stack)
 	int	i;
 	int	prev;
 
-	i = 1;
-	prev = stack.arr[0];
-	while (i < stack.top)
+	i = stack.top;
+	while (i >= 0)
 	{
+		prev = stack.arr[i];
+		i--;
 		if (prev >= stack.arr[i])
 			return (0);
-		i++;
 	}
 	return (1);
 }

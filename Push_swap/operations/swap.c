@@ -3,13 +3,13 @@
 #include "push_swap.h"
 #include <limits.h>
 
-void	swap(t_stack *stack, int n)
+void	swap(t_stack *stack)
 {
 	int	temp;
 
-	if (stack->top >= 1)
+	if (stack->top < 1)
 		return ;
 	temp = stack->arr[stack->top];
-	stack->arr[stack->top] = stack->arr[stack->top];
-	stack->arr[stack->top] = temp;
+	stack->arr[stack->top] = stack->arr[stack->top - 1];
+	stack->arr[stack->top - 1] = temp;
 }

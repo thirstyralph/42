@@ -23,10 +23,11 @@ typedef struct stack
 } t_stack;
 
 //operations
-void	push(t_stack *stack, int n);
+void	push(t_stack *target, t_stack *src);
+void	fill(t_stack *target, int n);
 void	rotate(t_stack *stack);
 void	reverse_rotate(t_stack *stack);
-void	swap(t_stack *stack, int n);
+void	swap(t_stack *stack);
 //parsing.c
 int		size(double num);
 void	parse(char **str, int **tab, int *len);
@@ -38,5 +39,9 @@ int 	isempty(t_stack stack);
 int		isordered(t_stack stack);
 //push_swap.c
 void	print_stack(t_stack stackA, t_stack stackB);
+//tiny_sort.c
+int		biggest(t_stack *stack);
+int		smallest(t_stack *stack);
+void	tiny_sort(t_stack *stack);
 
 #endif

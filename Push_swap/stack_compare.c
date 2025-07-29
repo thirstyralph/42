@@ -1,3 +1,4 @@
+
 int compare(int a, int j)
 {
 	if (a >= j)

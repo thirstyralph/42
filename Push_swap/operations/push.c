@@ -3,10 +3,21 @@
 #include "push_swap.h"
 #include <limits.h>
 
-void	push(t_stack *stack, int n)
+void	fill(t_stack *target, int n)
 {
-	if (isfull(*stack) == 1)
+	if (isfull(*target) == 1)
 		return ;
-	stack->top++;
-	stack->arr[stack->top] = n;
+	target->top++;
+	target->arr[target->top] = n;
+}
+
+void	push(t_stack *target, t_stack *src)
+{
+	if (isfull(*target) == 1)
+		return ;
+	else if (isempty(*src) == 1)
+		return ;
+	target->top++;
+	target->arr[target->top] = src->arr[src->top];
+	src->top--;
 }

@@ -1,30 +1,52 @@
-SOURCES = *.c						
-OBJECTS = $(SOURCES:.c=.o)
+#                                VARIABLES                                    #
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+NAME        = push_swap
 
-all: push_swap 
+CC          = gcc
+CFLAGS      = -Wall -Wextra -Werror -I. -Ilibft -Ift_printf
 
-push_swap: push_swap.o libft ft_printf
-	$(CC) -o $@ $< -Llibft -Lft_printf -lft -lftprintf
+#                                SOURCES                                      #
+
+SRC_DIR     = .
+OP_DIR      = operations
+
+SRC_FILES   =  tiny_sort.c push_swap.c parsing.c stack_check.c stack_compare.c \
+              $(OP_DIR)/push.c $(OP_DIR)/rotate.c $(OP_DIR)/swap.c
+
+OBJ_FILES   = $(SRC_FILES:.c=.o)
+
+LIBFT_DIR   = libft
+PRINTF_DIR  = ft_printf
+LIBFT       = $(LIBFT_DIR)/libft.a
+PRINTF      = $(PRINTF_DIR)/libftprintf.a
+
+#                                RULES                                        #
+
+.PHONY: all clean fclean re
+
+all: $(NAME)
+
+$(NAME): $(OBJ_FILES) $(LIBFT) $(PRINTF)
+	$(CC) $(CFLAGS) $(OBJ_FILES) $(LIBFT) $(PRINTF) -o $(NAME)
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $?
+	$(CC) $(CFLAGS) -c $< -o $@
 
-libft:
-	make -C libft
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
-ft_printf:
-	make -C ft_printf
+$(PRINTF):
+	make -C $(PRINTF_DIR)
 
 clean:
-	rm -f $(OBJECTS)
-	make -C libft clean
-	
+	rm -f $(OBJ_FILES)
+	make clean -C $(LIBFT_DIR)
+	make clean -C $(PRINTF_DIR)
+
 fclean: clean
-	rm -f push_swap libft/libft.a ft_printf/ft_printf.a
+	rm -f $(NAME)
+	make fclean -C $(LIBFT_DIR)
+	make fclean -C $(PRINTF_DIR)
 
 re: fclean all
-:w
-.PHONY: all libft clean fclean re
+

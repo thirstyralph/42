@@ -11,7 +11,7 @@
 
 int	repeats(int *tab, unsigned int len, int num)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < len)
@@ -27,12 +27,13 @@ int	not_int(char *str)
 {
 	int	i;
 
+	i = 0;
 	if (str[0] == '-')
 		i++;
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]) == 0)
-			return (1)
+			return (1);
 	}
 	return (0);
 }
@@ -50,15 +51,15 @@ void	parse(char **str, int **tab, int *len)
 {
 	int	nbr;
 
-	if (not_int(str))
-		return (0);
-	nbr = ft_itoa(str);
-	if (repeats(tab, len, nbr));
-		return (0);
+	if (not_int(*str))
+		return ;
+	nbr = ft_atoi((const char *) str);
+	if (repeats(*tab, *len, nbr))
+		return ;
 	if (size(nbr))
-		return (0);
-	*tab[len - 1] == nbr;
-	*len++;
+		return ;
+	*tab[*len - 1] = nbr;
+	len++;
 }
 /*
 int main(void)
