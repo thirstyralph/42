@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:37:22 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/07/22 18:45:04 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/07/30 19:44:50 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 
 typedef struct stack
 {
-	int	arr[MAX_SIZE];
-	int	top;
-} t_stack;
+	char	name;
+	int		arr[MAX_SIZE];
+	int		top;
+}	t_stack;
 
 //operations
 void	push(t_stack *target, t_stack *src);
@@ -35,13 +36,13 @@ void	parse(char **str, int **tab, int *len);
 int		compare(int a, int j);
 //stack_check.c
 int		isfull(t_stack stack);
-int 	isempty(t_stack stack);
+int		isempty(t_stack stack);
 int		isordered(t_stack stack);
 //push_swap.c
 void	print_stack(t_stack stackA, t_stack stackB);
 //tiny_sort.c
-int		biggest(t_stack *stack);
-int		smallest(t_stack *stack);
+int		biggest(t_stack stack);
+int		smallest(t_stack stack);
 void	tiny_sort(t_stack *stack);
 
 #endif

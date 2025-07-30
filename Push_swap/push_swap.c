@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/30 19:55:28 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/07/30 19:55:51 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./libft/libft.h"
 #include "./ft_printf/ft_printf.h"
 #include "push_swap.h"
@@ -15,8 +27,8 @@ void	print_stack(t_stack stackA, t_stack stackB)
 		i = stackB.top;
 	while (i >= 0)
 	{
-		ft_printf("%d...... || %d ... | pos %d\n",stackA.arr[i], 
-				stackB.arr[i], i);
+		ft_printf("%d...... || %d ... | pos %d\n",stackA.arr[i],
+			stackB.arr[i], i);
 		i--;
 	}
 }
@@ -26,9 +38,10 @@ int	main(void)
 	t_stack	sa;
 	t_stack	sb;
 
+	sa.name = 'a';
+	sb.name = 'b';
 	sa.top = -1;
 	sb.top = -1;
-
 	// probando fill
 	ft_printf("fill\n");
 	fill(&sb, -9);
@@ -73,4 +86,3 @@ int	main(void)
 	ft_printf("checking where the biggest vaue is = %d\n", smallest(sa));
 	return (0);
 }
-
