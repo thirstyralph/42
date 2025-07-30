@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/30 16:02:31 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/07/30 16:02:41 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <signal.h>
 #include <string.h>
@@ -28,7 +40,7 @@ void	send(pid_t pid, unsigned char c)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(42);
+		usleep(100);
 	}
 }
 
