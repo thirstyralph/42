@@ -17,7 +17,7 @@
 
 void	fill(t_stack *target, int n)
 {
-	if (isfull(*target) == 1)
+	if (isfull(*target) == 1 || target->top == MAX_SIZE)
 		return ;
 	target->top++;
 	target->arr[target->top] = n;

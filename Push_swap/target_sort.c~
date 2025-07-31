@@ -163,13 +163,7 @@ void	target_sort(t_stack *a, t_stack *b)
 		lift(b, cheapest(goal));
 		push(a, b);
 	}
-	print_stack(*a, *b);
-	/*
 	while (isordered(*a) == 0)
-	{
-		print_stack(*a, *b);
 		reverse_rotate(a);
-	}	
-	*/
 }
 

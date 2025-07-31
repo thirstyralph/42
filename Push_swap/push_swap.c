@@ -1,7 +1,6 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                        :::      ::::::::   */ /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -33,15 +32,31 @@ void	print_stack(t_stack stackA, t_stack stackB)
 	}
 }
 
+int	main(int argc, char **argv)
+{
+	t_stack	a;
+	t_stack	b;
+
+	a.name = 'a';
+	b.name = 'b';
+	a.top = -1;
+	b.top = -1;
+
+	parse 	
+	dump(argc, argv, &a);
+
+	//probando tiny sort
+	print_stack(a, b);
+	tiny_sort(&a);
+	print_stack(a, b);
+	target_sort(&a, &b);
+	print_stack(a, b);
+	return (0);
+}
+/*
 int	main(void)
 {
-	t_stack	sa;
-	t_stack	sb;
 
-	sa.name = 'a';
-	sb.name = 'b';
-	sa.top = -1;
-	sb.top = -1;
 	// probando fill
 	ft_printf("fill\n");
 	fill(&sb, -9);
@@ -84,5 +99,20 @@ int	main(void)
 	ft_printf("checking where the biggest vaue is = %d\n", biggest(sa));
 	rotate(&sa);
 	ft_printf("checking where the biggest vaue is = %d\n", smallest(sa));
+	ft_printf("cost\n");
+	int i;
+	for (i = 30; i < 40; i++)
+		fill(&sa, i);
+	for (i = 41; i < 51; i++)
+		fill(&sb, i);
+	print_stack(sa, sb);
+	ft_printf("el coste del numero 32 en sa es: %d\n", cost(sa, 10));
+	ft_printf("checking lift\n");
+	lift(&sa, 5);
+	print_stack(sa, sb);
+	print_stack(sa, sb);
+	target_sort(&sa, &sb);
+	print_stack(sa, sb);
 	return (0);
 }
+*/

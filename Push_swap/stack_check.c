@@ -5,7 +5,7 @@
 
 int	isfull(t_stack stack)
 {
-	if (stack.top >= MAX_SIZE - 1)
+	if (stack.top >= MAX_SIZE)
 		return (1);
 	else
 		return (0);

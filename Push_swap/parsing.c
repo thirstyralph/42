@@ -1,14 +1,20 @@
 #include "./libft/libft.h"
 #include "./ft_printf/ft_printf.h"
-#include "push_swap.h"
-#include <limits.h>
+#include "push_swap.h" #include <limits.h>
+void dump(int argc, char **argv, t_stack *a)
+{
+	int i;
+
+	i = 1;
+	while (i < argc)
+		fill(a, argv[0][i++]);
+}
 
 /* Check for repeating numbers
  * Returns:
  * 1 if there is repetition.
  * 0 if there is not.
  */
-
 int	repeats(int *tab, unsigned int len, int num)
 {
 	unsigned int	i;
@@ -46,21 +52,36 @@ int	size(double num)
 	else
 		return (0);
 }
-
-void	parse(char **str, int **tab, int *len)
+int parse(single(char 
+/*
+int	parse_single(char **str, int **tab, int *len)
 {
 	int	nbr;
 
 	if (not_int(*str))
-		return ;
+		return (1) ;
 	nbr = ft_atoi((const char *) str);
 	if (repeats(*tab, *len, nbr))
-		return ;
+		return (1) ;
 	if (size(nbr))
-		return ;
+		return (1) ;
 	*tab[*len - 1] = nbr;
 	len++;
+	return (0);
 }
+*/
+
+int	parse_full(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i <= argc)
+	{
+		if (parse(
+	}
+}
+
 /*
 int main(void)
 {

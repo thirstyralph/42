@@ -22,7 +22,7 @@ void	rotate(t_stack *stack)
 	if (isempty(*stack) == 1)
 		return ;
 	temp = stack->arr[0];
-	ft_memmove(&stack->arr[0], &stack->arr[1], sizeof(int) * stack->top);
+	ft_memmove(&stack->arr[0], &stack->arr[1], sizeof(int) * stack->top - 1);
 	stack->arr[stack->top] = temp;
 	ft_printf("r%c\n", stack->name);
 }
