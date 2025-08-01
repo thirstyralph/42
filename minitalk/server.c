@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 16:02:05 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/07/30 16:02:11 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/01 17:39:06 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	signal_handler(int sig)
 	{
 		i = 0;
 		ft_putchar(current_char);
-		if (current_char == 0)
-			ft_putchar('\n');
 	}
 }
 

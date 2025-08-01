@@ -1,15 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/01 11:33:07 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/01 13:57:10 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./libft/libft.h"
 #include "./ft_printf/ft_printf.h"
-#include "push_swap.h" #include <limits.h>
-void dump(int argc, char **argv, t_stack *a)
+#include "push_swap.h" 
+#include <limits.h>
+
+/*
+void	dump(int *tab, int len, t_stack *a)
 {
-	int i;
+	int	i;
 
 	i = 1;
-	while (i < argc)
-		fill(a, argv[0][i++]);
+	while (i < len)
+	{
+		fill(a, tab[i++]);
+	}
 }
-
+*/
 /* Check for repeating numbers
  * Returns:
  * 1 if there is repetition.
@@ -28,7 +45,12 @@ int	repeats(int *tab, unsigned int len, int num)
 	return (0);
 }
 
-//Not an integer
+/*
+ * not_int
+ * returns:
+ * 1 if the given string is not a number
+ * 0 if the given string IS a number
+ */
 int	not_int(char *str)
 {
 	int	i;
@@ -44,7 +66,12 @@ int	not_int(char *str)
 	return (0);
 }
 
-//Argument exceeds integer limit
+/*
+ * Check if argument exceeds integer limit
+ * returns:
+ * 	1 if argument exceeds integer limit
+ * 	0 if argument does NOT exceeds integer limit
+ */
 int	size(double num)
 {
 	if (num > INT_MAX || num < INT_MIN)
@@ -52,7 +79,50 @@ int	size(double num)
 	else
 		return (0);
 }
-int parse(single(char 
+
+/*
+ * returns:
+ * 	1 if the number follows the parsing rules
+ * 	0 if the number does NOT follow the parsing rules
+ */
+int	parse_single(char *arg, int *tab, unsigned int len)
+{
+	double	nbr;
+
+	nbr = ft_atoi(arg);
+	if (not_int(arg))
+		return (0);
+	if (size(nbr))
+		return (0);
+	if (repeats(tab, len, nbr))
+		return (0);
+	else
+		return (1);
+}
+
+/*
+ * if parse_full succeeds, the program continues
+ * if it fails, stack a and b are freed an the program exits
+ */
+void	parse_full(int argc, char *argv[], t_stack *a, t_stack *b)
+{
+	unsigned int	len;	
+	int				*tab;
+
+	len = 0;
+	alloc_stacks(argc, a, b);
+	tab = malloc(sizeof(int) * (argc - 1));
+	if (!tab)
+		exit_safely(a, b, 1);
+	while (len < ((unsigned int )argc - 1))
+	{
+		if (parse_single(argv[len], tab, len) == 0)
+			exit_safely(a, b, 1);
+		len++;
+	}
+	dump(tab, len, a);
+}
+
 /*
 int	parse_single(char **str, int **tab, int *len)
 {
@@ -69,7 +139,7 @@ int	parse_single(char **str, int **tab, int *len)
 	len++;
 	return (0);
 }
-*/
+
 
 int	parse_full(int argc, char **argv)
 {
@@ -82,6 +152,7 @@ int	parse_full(int argc, char **argv)
 	}
 }
 
+*/
 /*
 int main(void)
 {

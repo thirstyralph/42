@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 16:14:19 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/07/30 19:22:17 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:38:13 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct target
 	int		top;
 }	t_target;
 */
-
 
 /* finds the number closest but still bigger than a given number
  */
@@ -144,7 +143,7 @@ int	cheapest(t_target t)
 	}
 	return (index);
 }
-
+/*
 void	target_sort(t_stack *a, t_stack *b)
 {
 	t_target	goal;
@@ -164,12 +163,10 @@ void	target_sort(t_stack *a, t_stack *b)
 		push(a, b);
 	}
 	print_stack(*a, *b);
-	/*
+
 	while (isordered(*a) == 0)
 	{
 		print_stack(*a, *b);
 		reverse_rotate(a);
 	}	
 	*/
-}
-

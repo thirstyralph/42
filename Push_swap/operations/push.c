@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 16:06:40 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/07/30 19:52:23 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:31:00 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,21 @@
 
 void	fill(t_stack *target, int n)
 {
-	if (isfull(*target) == 1 || target->top == MAX_SIZE)
+	if (isfull(*target) == 1)
 		return ;
 	target->top++;
 	target->arr[target->top] = n;
+}
+
+void	dump(int *tab, int len, t_stack *a)
+{
+	int	i;
+
+	i = 1;
+	while (i < len)
+	{
+		fill(a, tab[i++]);
+	}
 }
 
 void	push(t_stack *target, t_stack *src)

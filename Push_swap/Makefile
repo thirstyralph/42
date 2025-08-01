@@ -10,7 +10,7 @@ CFLAGS      = -Wall -Wextra -Werror -I. -Ilibft -Ift_printf
 SRC_DIR     = .
 OP_DIR      = operations
 
-SRC_FILES   =  target_sort.c tiny_sort.c push_swap.c parsing.c stack_check.c stack_compare.c \
+SRC_FILES   = memory.c target_sort.c tiny_sort.c push_swap.c parsing.c stack_check.c stack_compare.c \
               $(OP_DIR)/push.c $(OP_DIR)/rotate.c $(OP_DIR)/swap.c
 
 OBJ_FILES   = $(SRC_FILES:.c=.o)

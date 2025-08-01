@@ -1,33 +1,46 @@
-SOURCES = server.c client.c
-OBJECTS = $(SOURCES:.c=.o)
+# Variables
+NAME = server
+NAME_C = client
 
-CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+RM = rm -rf
 
-all: server client
+LIBFT_PATH = libft
+FTPRINTF_PATH = ft_printf
 
-server: server.o libft ft_printf
-	$(CC) -o $@ $< -Llibft -Lft_printf -lft -lftprintf
+LIBFT_A = $(LIBFT_PATH)/libft.a
+FTPRINTF_A = $(FTPRINTF_PATH)/libftprintf.a
 
-client: client.o libft ft_printf
-	$(CC) -o $@ $< -Llibft -Lft_printf -lft -lftprintf
+SRC_SERVER =server.c
+SRC_CLIENT =client.c
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $?
+# Targets
+all: $(LIBFT_A) $(FTPRINTF_A) $(NAME) $(NAME_C)
 
-libft:
-	make -C libft
+$(LIBFT_A):
+	@$(MAKE) -C $(LIBFT_PATH)
 
-ft_printf:
-	make -C ft_printf
+$(FTPRINTF_A):
+	@$(MAKE) -C $(FTPRINTF_PATH)
+
+$(NAME): $(SRC_SERVER) $(LIBFT_A) $(FTPRINTF_A)
+	@cc $(CFLAGS) -o $@ $^
+	@echo "\n Server executable created \n"
+
+$(NAME_C): $(SRC_CLIENT) $(LIBFT_A) $(FTPRINTF_A)
+	@cc $(CFLAGS) -o $@ $^
+	@echo "\n Client executable created \n"
 
 clean:
-	rm -f $(OBJECTS)
-	make -C libft clean
-	
+	@$(MAKE) -C $(LIBFT_PATH) clean
+	@$(MAKE) -C $(FTPRINTF_PATH) clean
+
 fclean: clean
-	rm -f server client libft/libft.a ft_printf/ft_printf.a
+	@$(MAKE) -C $(LIBFT_PATH) fclean
+	@$(MAKE) -C $(FTPRINTF_PATH) fclean
+	@$(RM) $(NAME) $(NAME_C)
 
 re: fclean all
 
-.PHONY: all libft clean fclean re
+.PHONY: all clean fclean re
+

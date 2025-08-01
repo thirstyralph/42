@@ -6,39 +6,43 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:37:22 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/07/30 19:44:50 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/01 13:55:30 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define MAX_SIZE 100
 # include "./ft_printf/ft_printf.h"
 # include "./libft/libft.h"
 
 typedef struct stack
 {
 	char	name;
-	int		arr[MAX_SIZE];
+	int		*arr;
 	int		top;
 }	t_stack;
 
 typedef struct target
 {
-	int		target[MAX_SIZE];
-	int		cost[MAX_SIZE];
+	int		*target;
+	int		*cost;
 	int		top;
 }	t_target;
 
+//memory.c
+void	alloc_stacks(int argc, t_stack *a, t_stack *b);
+void	exit_safely(t_stack *a, t_stack *b, int status);
 //operations
 void	push(t_stack *target, t_stack *src);
 void	fill(t_stack *target, int n);
+void	dump(int *tab, int len, t_stack *a);
 void	rotate(t_stack *stack);
 void	reverse_rotate(t_stack *stack);
 void	swap(t_stack *stack);
 //parsing.c
-void	dump(int argc, char **argv, t_stack *a);
 int		size(double num);
-void	parse(char **str, int **tab, int *len);
+void	parse(char **str, int **tab, unsigned int *len);
+int		parse_single(char *arg, int *tab, unsigned int len);
+void	parse_full(int argc, char *argv[], t_stack *a, t_stack *b);
 //stack_compare.c
 int		compare(int a, int j);
 //stack_check.c

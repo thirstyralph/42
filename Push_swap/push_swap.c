@@ -1,11 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */ /*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 19:55:28 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/07/30 19:55:51 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/01 12:40:08 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/01 13:58:35 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +27,7 @@ void	print_stack(t_stack stackA, t_stack stackB)
 		i = stackB.top;
 	while (i >= 0)
 	{
-		ft_printf("%d...... || %d ... | pos %d\n",stackA.arr[i],
+		ft_printf("%d...... || %d ... | pos %d\n", stackA.arr[i],
 			stackB.arr[i], i);
 		i--;
 	}
@@ -41,16 +42,7 @@ int	main(int argc, char **argv)
 	b.name = 'b';
 	a.top = -1;
 	b.top = -1;
-
-	parse 	
-	dump(argc, argv, &a);
-
-	//probando tiny sort
-	print_stack(a, b);
-	tiny_sort(&a);
-	print_stack(a, b);
-	target_sort(&a, &b);
-	print_stack(a, b);
+	parse_full(argc, argv, &a, &b);
 	return (0);
 }
 /*
