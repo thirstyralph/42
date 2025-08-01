@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:37:22 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/01 18:42:06 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/01 19:36:51 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -46,7 +46,7 @@ void	parse_full(int argc, char *argv[], t_stack *a, t_stack *b);
 //stack_compare.c
 int		compare(int a, int j);
 //stack_check.c
-int		isfull(t_stack stack, int len);
+int		isfull(t_stack stack, int len)
 int		isempty(t_stack stack);
 int		isordered(t_stack stack);
 //push_swap.c
