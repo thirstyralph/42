@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 16:06:40 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/01 13:31:00 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/01 18:53:27 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "push_swap.h"
 #include <limits.h>
 
-void	fill(t_stack *target, int n)
+void	fill(t_stack *target, int n, int argc)
 {
-	if (isfull(*target) == 1)
+	if (isfull(*target, argc) == 1)
 		return ;
 	target->top++;
 	target->arr[target->top] = n;

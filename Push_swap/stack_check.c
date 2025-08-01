@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 13:59:34 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/01 13:59:35 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/01 18:42:13 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "push_swap.h"
 #include <limits.h>
 
-int	isfull(t_stack stack)
+int	isfull(t_stack stack, int len)
 {
-	if (stack.top >= MAX_SIZE)
+	if (stack.top >= len)
 		return (1);
 	else
 		return (0);
