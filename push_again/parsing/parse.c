@@ -1,5 +1,7 @@
 #include "./../push_swap.h"
-#include <limits.h> #include <stdio.h>
+#include <limits.h>
+#include <stdio.h>
+
  /*
 	is_int
 	returns:
@@ -76,7 +78,7 @@ int	parse_single(char *str, t_stack *a)
 	return (n);
 }
 
-void parse_full(t_stack *a,int argc, char *argv[])
+void parse(t_stack *a,int argc, char *argv[])
 {
 	int	i;
 

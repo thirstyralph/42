@@ -15,7 +15,7 @@
 #include "push_swap.h"
 #include <limits.h>
 
-void	swap(t_stack *stack)
+char	swap(t_stack *stack)
 {
 	int	temp;
 
@@ -24,5 +24,5 @@ void	swap(t_stack *stack)
 	temp = stack->arr[stack->top];
 	stack->arr[stack->top] = stack->arr[stack->top - 1];
 	stack->arr[stack->top - 1] = temp;
-	ft_printf("s%c\n", stack->name);
+	return (20 + stack->id);
 }

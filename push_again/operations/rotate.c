@@ -24,7 +24,7 @@ char	rotate(t_stack *stack)
 	temp = stack->arr[0];
 	ft_memmove(&stack->arr[0], &stack->arr[1], sizeof(int) * stack->top - 1);
 	stack->arr[stack->top] = temp;
-	return (30 + stack->id)
+	return (30 + stack->id);
 }
 
 char	reverse_rotate(t_stack *stack)
@@ -36,5 +36,5 @@ char	reverse_rotate(t_stack *stack)
 	temp = stack->arr[stack->top];
 	ft_memmove(&stack->arr[1], &stack->arr[0], sizeof(int) * stack->top);
 	stack->arr[0] = temp;
-	return (40 + stack->id)
+	return (40 + stack->id);
 }
