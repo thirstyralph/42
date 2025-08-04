@@ -55,7 +55,7 @@ int	smallest(t_stack stack)
 	return (pos_small);
 }
 
-void	tiny_sort(t_stack *stack)
+void	sort_three(t_stack *stack)
 {
 	int	big;
 	int	small;

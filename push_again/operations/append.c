@@ -1,6 +1,28 @@
 #include "./../push_swap.h"
 
-void	append(char **str, char c)
+void	append_char(char **str, char c)
+{
+	int		i;
+	int		len;
+	char	*tmp;
+
+	i = 0;
+	len = ft_strlen(str);
+	tmp = malloc(sizeof(char) * (len + 3));
+	if (!tmp)
+		return ;
+	while (i < len)
+	{
+		tmp[i] = (*str)[i];
+		i++;
+	}
+	tmp[i] = c;
+	tmp[i + 1] = 0;
+	free(*str);
+	*str = tmp;
+}
+
+void	append_str(char **str, char c)
 {
 	int		i;
 	int		len;

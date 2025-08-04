@@ -48,44 +48,30 @@ int	repeats(int n, int *tab, int top)
 
 void	add(t_stack *stack, int n)
 {
-	int	*tmp;
-	int	i;
-
-	i = 0;
-	tmp = malloc(sizeof(int) * (stack->top + 2));
-	if (!tmp)
-		return ;
-	while (i < stack->top)
-	{
-		tmp[i] = stack->arr[i];
-		i++;
-	}
-	tmp[i] = n;
+	stack->arr[stack->top] = n;
 	stack->top++;
-	free(stack->arr);
-	stack->arr = tmp;
 }
 
-int	parse_single(char *str, t_stack *a)
+int	parse_single(char *str, t_stack *a, t_stack *b)
 {
 	int	n;
 
 	if (is_int(str) == 0)
-		exit_safely_parse(a);
+		exit_safely(a, b);
 	n = ft_atoi(str);
 	if (repeats(n, a->arr, a->top))
-		exit_safely_parse(a);
+		exit_safely(a, b);
 	return (n);
 }
 
-void parse(t_stack *a,int argc, char *argv[])
+void parse(t_stack *a, t_stack *b, int argc, char *argv[])
 {
 	int	i;
 
 	i = 1;
 	while (i < argc)
 	{
-		add(a, parse_single(argv[i], a));
+		add(a, parse_single(argv[i], a, b));
 		i++;
 	}
 }
