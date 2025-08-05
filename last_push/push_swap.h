@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 22:09:22 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/05 05:22:15 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/05 13:12:10 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define ID_BOTH	3
 # include <stdlib.h>
 # include <unistd.h>
-# include "./libft/libft.h"
 
 /*
 typedef struct s_pair
@@ -31,11 +30,13 @@ typedef struct s_pair
 	char 	*movements;
 }	t_pair;
 */
+/*
 typedef struct s_cost
 {
 	int	pos;
 	int	ra;
 }
+*/
 typedef struct s_stack
 {
 	int	*arr;
@@ -58,6 +59,8 @@ int		is_sorted(t_stack stack);
 //cost.c
 int		middle(int n);
 int		single_cost(int pos, int top, int middle);
+int		median(t_stack a, int ta);
+int		max(int a, int b);
 int		cost(t_stack a, t_stack b, int ta, int tb);
 
 #endif

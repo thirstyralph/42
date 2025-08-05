@@ -6,11 +6,11 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 04:12:19 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/05 04:53:09 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/05 13:11:18 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "./../push_swap.h"
 
 int	middle(int n)
 {
@@ -25,6 +25,22 @@ int	single_cost(int pos, int top, int middle)
 		return (pos++);
 }
 
+int	median(t_stack a, int ta)
+{
+	if (ta >= middle(a.top))
+		return (2);
+	else
+		return (1);
+}
+
+int	max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
+}
+
 int	cost(t_stack a, t_stack b, int ta, int tb)
 {
 	int	middle_a;
@@ -33,19 +49,12 @@ int	cost(t_stack a, t_stack b, int ta, int tb)
 	int	cost_b;
 	int	cost_total;
 
-	middle_a = middle(a.top);
-	middle_b = middle(b.top);
+	middle_a = median(a, ta);
+	middle_b = median(b, tb);
 	cost_a = single_cost(ta, a.top, middle_a);
 	cost_b = single_cost(tb, b.top, middle_b);
-	if (ta > middle_a && tb > middle_b || ta < middle_a && tb < middle_b)
-	{
-		if (cost_a < cost_b)
-			cost_total = cost_b - cost_a;
-		else if (cost_b < cost_a)
-			cost_total = cost_a - cost_b;
-		else
-			cost_total = cost_b;
-	}
+	if (middle_a == 1 && middle_b == 1 || middle_a == 2 && middle_b == 2)
+		cost_total = max(cost_a, cost_b);
 	else
 		cost_total = cost_b + cost_a;
 	return (cost_total);
