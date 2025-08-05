@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 16:06:54 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/07/30 19:54:00 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:01:09 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ char	swap(t_stack *stack)
 {
 	int	temp;
 
-	if (stack->top < 1)
-		return ;
 	temp = stack->arr[stack->top];
 	stack->arr[stack->top] = stack->arr[stack->top - 1];
 	stack->arr[stack->top - 1] = temp;
-	return (20 + stack->id);
+	return (OP_SWAP + stack->id);
 }

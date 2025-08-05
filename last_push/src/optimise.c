@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   optimise.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 16:06:40 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/04 19:07:51 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/05 04:49:13 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/05 05:09:44 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "./ft_printf/ft_printf.h"
-#include "push_swap.h"
-#include <limits.h>
+#include "./../push_swap.h"
 
-void	fill(t_stack *target, int n)
+char	*optimise(t_stack a, t_stack b, int ta, int tb)
 {
-	target->top++;
-	target->arr[target->top] = n;
-}
 
-char	push(t_stack *target, t_stack *src)
-{
-	target->top++;
-	target->arr[target->top] = src->arr[src->top];
-	src->top--;
-	return (OP_PUSH + target->id);
+	
 }

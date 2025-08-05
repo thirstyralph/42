@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_print_dec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 16:06:40 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/04 19:07:51 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/04/07 16:36:32 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/04/07 18:35:04 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "./ft_printf/ft_printf.h"
-#include "push_swap.h"
-#include <limits.h>
+#include "ft_printf.h"
 
-void	fill(t_stack *target, int n)
+int	ft_print_dec(int n)
 {
-	target->top++;
-	target->arr[target->top] = n;
-}
+	int		len;
+	char	*str;
 
-char	push(t_stack *target, t_stack *src)
-{
-	target->top++;
-	target->arr[target->top] = src->arr[src->top];
-	src->top--;
-	return (OP_PUSH + target->id);
+	len = ft_int_len(n);
+	if (n < 0)
+		len++;
+	str = ft_calloc(sizeof(char), (len + 1));
+	if (!str)
+		return (0);
+	ft_itoa(n, str);
+	ft_print_str(str);
+	free(str);
+	str = NULL;
+	return (len);
 }
+/*
+int main(void)
+{
+	int	i;
+
+	i = 0;
+	ft_print_dec(i);
+	return (0);
+}
+*/

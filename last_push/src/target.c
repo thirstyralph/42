@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   target.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 16:06:40 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/04 19:07:51 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/05 03:32:42 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/05 04:08:35 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "./ft_printf/ft_printf.h"
-#include "push_swap.h"
-#include <limits.h>
+#include "../push_swap.h"
 
-void	fill(t_stack *target, int n)
+int	target(t_stack a, int n)
 {
-	target->top++;
-	target->arr[target->top] = n;
-}
+	int	i;
+	int	target;
 
-char	push(t_stack *target, t_stack *src)
-{
-	target->top++;
-	target->arr[target->top] = src->arr[src->top];
-	src->top--;
-	return (OP_PUSH + target->id);
+	target = 0;
+	i = a.top;
+	while (i >= 0)
+	{
+		if (a.arr[i] > i && a.arr[i] < a.arr[target])
+			target = i;
+		i--;
+	}
+	return (target);
 }

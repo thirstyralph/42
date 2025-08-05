@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:37:22 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/07/30 19:44:50 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/04 19:13:49 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -23,7 +23,6 @@
 # include "./ft_printf/ft_printf.h"
 # include "./libft/libft.h"
 
-
 typedef struct stack
 {
 	char	id;
@@ -39,18 +38,22 @@ typedef struct target
 }	t_target;
 */
 //operations
-void	push(t_stack *target, t_stack *src);
+char	push(t_stack *target, t_stack *src);
 void	fill(t_stack *target, int n);
-void	rotate(t_stack *stack);
-void	reverse_rotate(t_stack *stack);
-void	swap(t_stack *stack);
-
+char	rotate(t_stack *stack);
+char	reverse_rotate(t_stack *stack);
+char	swap(t_stack *stack);
+char	append_char(char **str, char c);
+char	append_str(char **s1, char *s2);
 //parsing.c
 int		is_int(char *str);
 int		is_in_int_range(const char *str);
+void	parse(t_stack *a, t_stack *b, int argc, char *argv[]);
 //error.c
-void	exit_safely_parse(t_stack a);
-void	exit_safely(t_stack a, t_stack b);
+void	exit_safely(t_stack *a, t_stack *b);
+//sorting
+char	sort_two(t_stack *a);
+
 /*
 void	dump(int argc, char **argv, t_stack *a);
 int		size(double num);

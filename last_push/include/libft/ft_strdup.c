@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_safely.c                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ranavarr <ranavarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 18:11:13 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/04 18:11:15 by ranavarr         ###   ########.fr       */
+/*   Created: 2024/12/30 15:49:56 by ranavarr          #+#    #+#             */
+/*   Updated: 2024/12/30 16:03:33 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../push_swap.h"
-#include <limits.h>
-#include <stdio.h>
+#include "libft.h"
 
-void	exit_safely(t_stack *a, t_stack *b)
+char	*ft_strdup(const char *s)
 {
-	ft_printf("ERROR \n");
-	if (a && a->arr)
-		free(a->arr);
-	if (b && b->arr)
-		free(b->arr);
-	exit(1);
+	char	*dest;
+	size_t	i;
+
+	dest = (char *)malloc(ft_strlen(s) + 1);
+	if (!dest)
+		return (0);
+	i = 0;
+	while (s[i])
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

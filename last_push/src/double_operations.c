@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   double_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 16:06:40 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/04 19:07:51 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/05 03:03:20 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/05 03:08:50 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "./ft_printf/ft_printf.h"
 #include "push_swap.h"
-#include <limits.h>
 
-void	fill(t_stack *target, int n)
+char	double_rotate(t_stack *a, t_stack *b)
 {
-	target->top++;
-	target->arr[target->top] = n;
+	rotate(a);
+	rotate(b);
+	return (OP_ROT + 3);
 }
 
-char	push(t_stack *target, t_stack *src)
+char	double_swap(t_stack *a, t_stack *b)
 {
-	target->top++;
-	target->arr[target->top] = src->arr[src->top];
-	src->top--;
-	return (OP_PUSH + target->id);
+	swap(a);
+	swap(b);
+	return (OP_SWAP + 3);
+}
+
+char	double_reverse(t_stack *a, t_stack *b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
+	return (OP_REV + 3);
 }

@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_safely.c                                      :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ranavarr <ranavarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 18:11:13 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/04 18:11:15 by ranavarr         ###   ########.fr       */
+/*   Created: 2024/12/27 05:57:22 by ranavarr          #+#    #+#             */
+/*   Updated: 2024/12/30 16:16:56 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../push_swap.h"
-#include <limits.h>
-#include <stdio.h>
+#include "libft.h"
 
-void	exit_safely(t_stack *a, t_stack *b)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	ft_printf("ERROR \n");
-	if (a && a->arr)
-		free(a->arr);
-	if (b && b->arr)
-		free(b->arr);
-	exit(1);
+	size_t	i;
+
+	i = 0;
+	while ((i + 1 < size) && (src[i]))
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	if (size > 0)
+		dst[i] = '\0';
+	while (src[i])
+		i++;
+	return (i);
 }

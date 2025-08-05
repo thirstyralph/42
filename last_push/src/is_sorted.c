@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 16:06:40 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/04 19:07:51 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/05 01:09:43 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/05 04:02:47 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "./ft_printf/ft_printf.h"
-#include "push_swap.h"
-#include <limits.h>
+#include "./../push_swap.h"
 
-void	fill(t_stack *target, int n)
+int	is_sorted(t_stack stack)
 {
-	target->top++;
-	target->arr[target->top] = n;
-}
+	int	i;
 
-char	push(t_stack *target, t_stack *src)
-{
-	target->top++;
-	target->arr[target->top] = src->arr[src->top];
-	src->top--;
-	return (OP_PUSH + target->id);
+	i = stack.top;
+	while (i > 0)
+	{
+		if (i > i - 1)
+			return (0);
+		i--;
+	}
+	return (1);
 }

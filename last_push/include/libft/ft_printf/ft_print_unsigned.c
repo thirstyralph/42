@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 16:06:40 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/04 19:07:51 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/04/07 16:37:18 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/04/07 18:49:32 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "./ft_printf/ft_printf.h"
-#include "push_swap.h"
-#include <limits.h>
+#include "ft_printf.h"
 
-void	fill(t_stack *target, int n)
+int	ft_print_unsigned(unsigned int n)
 {
-	target->top++;
-	target->arr[target->top] = n;
-}
+	int		len;
+	char	*str;
 
-char	push(t_stack *target, t_stack *src)
-{
-	target->top++;
-	target->arr[target->top] = src->arr[src->top];
-	src->top--;
-	return (OP_PUSH + target->id);
+	len = ft_unsigned_len(n);
+	str = ft_calloc(sizeof(char), (len + 1));
+	str = ft_uitoa(n, str);
+	ft_print_str(str);
+	free(str);
+	str = NULL;
+	return (len);
 }
+/*
+int main(void)
+{
+	unsigned int	i;
+
+	i = 1988481;
+	ft_print_unsigned(i);
+	return (0);
+}
+*/

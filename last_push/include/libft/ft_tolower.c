@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_safely.c                                      :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ranavarr <ranavarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 18:11:13 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/04 18:11:15 by ranavarr         ###   ########.fr       */
+/*   Created: 2024/12/27 07:42:02 by ranavarr          #+#    #+#             */
+/*   Updated: 2024/12/30 16:03:11 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../push_swap.h"
-#include <limits.h>
-#include <stdio.h>
-
-void	exit_safely(t_stack *a, t_stack *b)
+int	ft_tolower(int c)
 {
-	ft_printf("ERROR \n");
-	if (a && a->arr)
-		free(a->arr);
-	if (b && b->arr)
-		free(b->arr);
-	exit(1);
+	if ((c >= 'A') && (c <= 'Z'))
+	{
+		c = c + 32;
+	}
+	return (c);
 }

@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 16:06:40 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/04 19:07:51 by ranavarr         ###   ########.fr       */
+/*   Created: 2024/12/27 18:32:34 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/04/07 18:31:09 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-#include "./ft_printf/ft_printf.h"
-#include "push_swap.h"
-#include <limits.h>
+#include "ft_printf.h"
 
-void	fill(t_stack *target, int n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	target->top++;
-	target->arr[target->top] = n;
-}
+	size_t	total_size;
+	void	*ptr;
 
-char	push(t_stack *target, t_stack *src)
-{
-	target->top++;
-	target->arr[target->top] = src->arr[src->top];
-	src->top--;
-	return (OP_PUSH + target->id);
+	if (nmemb != 0 && size > SIZE_MAX / nmemb)
+		return (0);
+	total_size = nmemb * size;
+	ptr = malloc(total_size);
+	if (!ptr)
+		return (0);
+	ft_memset(ptr, 0, total_size);
+	return (ptr);
 }

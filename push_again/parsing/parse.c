@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/04 18:13:33 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/04 18:13:53 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../push_swap.h"
 #include <limits.h>
 #include <stdio.h>
 
- /*
+/*
 	is_int
 	returns:
 		1 if the parameter is a number
@@ -64,7 +76,7 @@ int	parse_single(char *str, t_stack *a, t_stack *b)
 	return (n);
 }
 
-void parse(t_stack *a, t_stack *b, int argc, char *argv[])
+void	parse(t_stack *a, t_stack *b, int argc, char *argv[])
 {
 	int	i;
 
