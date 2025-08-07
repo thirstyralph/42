@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   perform.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/07 20:59:06 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/07 21:38:33 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include <limits.h>
 #include "./../push_swap.h"
 
 int	smallest(int *tab, int top)
@@ -9,7 +21,6 @@ int	smallest(int *tab, int top)
 	i = 0;
 	min = INT_MAX;
 	min_pos = -1;
-
 	while (i <= top)
 	{
 		if (tab[i] < top)
@@ -22,6 +33,7 @@ int	smallest(int *tab, int top)
 	return (min_pos);
 }
 
+/*
 void	loop_rrr(t_stack *a, t_stack *b, int laps)
 {
 	int	i;
@@ -55,9 +67,7 @@ int	calculate_movements(int top_a, int top_b, int target_a, int target_b)
 	int	cost_a;
 	int	cost_b;
 	int	cost_total;
-	int	i;
 
-	i = 0;
 	middle_a = median(top_a, target_a);
 	middle_b = median(top_b, target_b);
 	cost_a = single_cost(target_a, top_a, middle_a);
@@ -66,10 +76,80 @@ int	calculate_movements(int top_a, int top_b, int target_a, int target_b)
 	{
 		cost_total = max(cost_a, cost_b);
 	}
-	else if(middle_a == 2 && middle_b == 2)
+	else if (middle_a == 2 && middle_b == 2)
 	else
 		cost_total = cost_b + cost_a;
 	return (cost_total);
 }
+*/
 
+void	do_rotation(t_stack *a, t_stack *b, t_mov movs)
+{
+	int	i;
 
+	i = 0;
+	while (i < movs.ra)
+	{
+		rotate(a);
+		i++;
+	}
+	i = 0;
+	while (i < movs.rb)
+	{
+		rotate(b);
+		i++;
+	}
+	i = 0;
+	while (i < movs.rr)
+	{
+		rotate(a);
+		rotate(b);
+		i++;
+	}
+}
+
+void	do_reverse_rotation(t_stack *a, t_stack *b, t_mov movs)
+{
+	int	i;
+
+	i = 0;
+	while (i < movs.rra)
+	{
+		reverse_rotate(a);
+		i++;
+	}
+	i = 0;
+	while (i < movs.rra)
+	{
+		reverse_rotate(b);
+		i++;
+	}
+	i = 0;
+	while (i < movs.rra)
+	{
+		reverse_rotate(b);
+		reverse_rotate(a);
+		i++;
+	}
+}
+/*
+	i = 0;
+	while (i < movs.ra)
+	{
+		rotate(a);
+		i++;
+	}
+	i = 0;
+	while (i < movs.ra)
+	{
+		rotate(a);
+		i++;
+	}
+	i = 0;
+	while (i < movs.ra)
+	{
+		rotate(a);
+		i++;
+	}
+}d
+*/

@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 13:22:27 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/07 23:00:26 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/04/07 16:37:18 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/04/07 18:49:32 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../push_swap.h"
+#include "ft_printf.h"
 
-void	turk(t_stack *a, t_stack *b)
+int	ft_print_unsigned(unsigned int n)
 {
-	t_cost	*costs;
-	t_mov	instructions;
+	int		len;
+	char	*str;
 
-	while (a->top > 3)
-		push(a, b);
-	while (b->top > 0)
-	{
-		costs = calculate_targets(*a, b);
-
-	}
+	len = ft_unsigned_len(n);
+	str = ft_calloc(sizeof(char), (len + 1));
+	str = ft_uitoa(n, str);
+	ft_print_str(str);
+	free(str);
+	str = NULL;
+	return (len);
 }
+/*
+int main(void)
+{
+	unsigned int	i;
+
+	i = 1988481;
+	ft_print_unsigned(i);
+	return (0);
+}
+*/

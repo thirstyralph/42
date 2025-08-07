@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 03:32:42 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/05 04:08:35 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/07 23:00:08 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_cost	calculate_targets(t_stack a, t_stack b)
 
 	cost.target = malloc(sizeof(int) * (b.top + 1));
 	if (!cost.target)
-		return (NULL);
+		return (cost);
 	i = 0;
 	cost.top = b.top;
 	while (i <= b.top)
@@ -51,4 +51,3 @@ t_cost	calculate_targets(t_stack a, t_stack b)
 	}
 	return (cost);
 }
-

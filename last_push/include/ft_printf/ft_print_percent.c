@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_print_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 13:22:27 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/07 23:00:26 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/03/22 17:00:17 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/03/22 17:01:57 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../push_swap.h"
+#include "ft_printf.h"
 
-void	turk(t_stack *a, t_stack *b)
+int	ft_print_percent(void)
 {
-	t_cost	*costs;
-	t_mov	instructions;
-
-	while (a->top > 3)
-		push(a, b);
-	while (b->top > 0)
-	{
-		costs = calculate_targets(*a, b);
-
-	}
+	return (ft_putchar('%'));
 }

@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 13:22:27 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/07 23:00:26 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/07 21:05:17 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/07 21:07:28 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../push_swap.h"
 
-void	turk(t_stack *a, t_stack *b)
+int	middle(int n)
 {
-	t_cost	*costs;
-	t_mov	instructions;
+	return ((n / 2) - (n % 2));
+}
 
-	while (a->top > 3)
-		push(a, b);
-	while (b->top > 0)
-	{
-		costs = calculate_targets(*a, b);
+int	single_cost(int pos, int top, int middle)
+{
+	if (pos >= middle)
+		return (top - pos);
+	else
+		return (pos++);
+}
 
-	}
+int	median(int top, int target_a)
+{
+	if (target_a >= middle(top))
+		return (2);
+	else
+		return (1);
+}
+
+int	max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	else
+		return (b);
 }

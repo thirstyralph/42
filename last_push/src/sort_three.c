@@ -1,27 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 13:22:27 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/07 23:00:26 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/05 16:14:49 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/05 16:40:21 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../push_swap.h"
+#include "../push_swap.h"
 
-void	turk(t_stack *a, t_stack *b)
+int	biggest(t_stack a)
 {
-	t_cost	*costs;
-	t_mov	instructions;
+	int	i;
+	int	big;
 
-	while (a->top > 3)
-		push(a, b);
-	while (b->top > 0)
+	big = INT_MIN;
+	while (a.arr[i])
 	{
-		costs = calculate_targets(*a, b);
-
+		if (a.arr[i] > big)
+			big = i;
+		i++;
 	}
+	return (big);
+}
+
+int	smallest(t_stack a)
+{
+	int	i;
+	int	small;
+
+	small = INT_MAX;
+	while (a.arr[i])
+	{
+		if (a.arr[i] < small)
+			small = i;
+		i++;
+	}
+	return (small);
+}
+
+void	sort_three(t_stack *a)
+{
+	int	big;
+	int	small;
+
+	big = biggest(*a);
+	small = smallest(*a);
 }

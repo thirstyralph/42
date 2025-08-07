@@ -6,12 +6,12 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 04:12:19 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/05 13:11:18 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/07 22:14:13 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../push_swap.h"
-
+/*
 int	middle(int n)
 {
 	return ((n / 2) - (n % 2));
@@ -39,7 +39,7 @@ int	max(int a, int b)
 		return (a);
 	else
 		return (b);
-}
+}*/
 /*
 	when given a position in b and  a target postion in a
 	it retuns the number of necessary operations needed to 
@@ -75,7 +75,7 @@ void	calculate_cost(t_stack a, t_cost *cost)
 	int	*total;
 
 	total = malloc(sizeof(int) * (cost->top + 1));
-	if(!total)
+	if (!total)
 		return ;
 	i = 0;
 	while (i <= cost->top)

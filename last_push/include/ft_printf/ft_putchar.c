@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 13:22:27 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/07 23:00:26 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/03/22 16:44:32 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/03/22 16:47:28 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../push_swap.h"
+#include "ft_printf.h"
 
-void	turk(t_stack *a, t_stack *b)
+int	ft_putchar(char c)
 {
-	t_cost	*costs;
-	t_mov	instructions;
-
-	while (a->top > 3)
-		push(a, b);
-	while (b->top > 0)
-	{
-		costs = calculate_targets(*a, b);
-
-	}
+	write(1, &c, 1);
+	return (1);
 }

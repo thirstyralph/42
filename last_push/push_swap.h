@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 22:09:22 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/05 13:12:10 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/07 22:24:56 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,13 @@ char	double_swap(t_stack *a, t_stack *b);
 char	double_reverse(t_stack *a, t_stack *b);
 //is_sorted.c
 int		is_sorted(t_stack stack);
-//cost.c
+//position.c
 int		middle(int n);
 int		single_cost(int pos, int top, int middle);
-int		median(t_stack a, int ta);
+int		median(int top, int target_a);
 int		max(int a, int b);
-int		optimised_cost(t_stack a, t_stack b, int ta, int tb);
+//cost.c
+int		optimised_cost(int top_a, int top_b, int target_a, int target_b);
 void	calculate_cos(t_stack a, t_cost *cost);
 //index.c
 int		biggest(int *tab, int top);
@@ -86,6 +87,8 @@ int		*parse(int argc, char *argv[]);
 int		target(t_stack a, int n);
 t_cost	calculate_targets(t_stack a, t_stack b);
 //perform.c
-
+int		smallest(int *tab, int top);
+void	do_rotation(t_stack *a, t_stack *b, t_mov movs);
+void	do_reverse_rotation(t_stack *a, t_stack *b, t_mov movs);
 
 #endif
