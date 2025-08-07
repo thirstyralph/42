@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 22:09:22 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/07 22:24:56 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/08 01:41:59 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		median(int top, int target_a);
 int		max(int a, int b);
 //cost.c
 int		optimised_cost(int top_a, int top_b, int target_a, int target_b);
-void	calculate_cos(t_stack a, t_cost *cost);
+void	calculate_cost(t_stack a, t_cost *cost);
 //index.c
 int		biggest(int *tab, int top);
 int		next(int *tab, int top, int prev);
@@ -90,5 +90,6 @@ t_cost	calculate_targets(t_stack a, t_stack b);
 int		smallest(int *tab, int top);
 void	do_rotation(t_stack *a, t_stack *b, t_mov movs);
 void	do_reverse_rotation(t_stack *a, t_stack *b, t_mov movs);
+void	perform(t_stack *a, t_stack *b, t_mov movs);
 
 #endif

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 20:59:06 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/07 21:38:33 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/08 01:35:03 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/08 01:41:31 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <limits.h>
@@ -132,6 +132,14 @@ void	do_reverse_rotation(t_stack *a, t_stack *b, t_mov movs)
 		i++;
 	}
 }
+
+void	perform(t_stack *a, t_stack *b, t_mov movs)
+{
+	do_rotation(a, b, movs);
+	do_reverse_rotation(a, b, movs);
+	push(a, b);
+}
+
 /*
 	i = 0;
 	while (i < movs.ra)

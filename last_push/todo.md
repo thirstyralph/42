@@ -1,0 +1,1 @@
+- [ ] Function that fills the t_mov struct that is used by perform.
