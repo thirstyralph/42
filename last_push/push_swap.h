@@ -30,18 +30,29 @@ typedef struct s_pair
 	char 	*movements;
 }	t_pair;
 */
-/*
-typedef struct s_cost
+
+typedef struct s_movements
 {
-	int	pos;
 	int	ra;
-}
-*/
+	int	rra;
+	int	rb;
+	int	rrb;
+	int	rrr;
+	int	rr;
+}	t_mov;
+
+typedef struct s_targets
+{
+	int	*target;
+	int	*cost;
+	int	top;
+}	t_cost;
+
 typedef struct s_stack
 {
-	int	*arr;
-	int	top;
-	int	id;
+	int		*arr;
+	int		top;
+	char	id;
 }	t_stack;
 
 //operations.c
@@ -61,6 +72,20 @@ int		middle(int n);
 int		single_cost(int pos, int top, int middle);
 int		median(t_stack a, int ta);
 int		max(int a, int b);
-int		cost(t_stack a, t_stack b, int ta, int tb);
+int		optimised_cost(t_stack a, t_stack b, int ta, int tb);
+void	calculate_cos(t_stack a, t_cost *cost);
+//index.c
+int		biggest(int *tab, int top);
+int		next(int *tab, int top, int prev);
+int		indexate(int *original, int top);
+//parse.c
+int		*arrtoi(int argc, char *argv[]);
+int		check_repetition(int top, int *tab);
+int		*parse(int argc, char *argv[]);
+//target.c
+int		target(t_stack a, int n);
+t_cost	calculate_targets(t_stack a, t_stack b);
+//perform.c
+
 
 #endif
