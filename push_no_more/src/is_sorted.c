@@ -16,12 +16,15 @@ int	is_sorted(t_stack stack)
 {
 	int	i;
 
-	i = stack.top;
-	while (i > 0)
+	i = 0;
+	while (i < stack.top)
 	{
-		if (i > i - 1)
+		if (stack.arr[i] < stack.arr[i + 1])
+		{
+			ft_printf("na, not sorted\n");
 			return (0);
-		i--;
+		}
+		i++;
 	}
 	return (1);
 }

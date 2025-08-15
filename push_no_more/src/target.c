@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "stdio.h"
 
 /*
 	receives:
@@ -24,17 +25,18 @@ int	target(t_stack a, int n)
 	int	target_pos;
 	int	small;
 
-	target_pos = -1;
-	small = n;
+	target_pos = smallest(a.arr, a.top);
+	small = INT_MAX;
 	i = 0;
 	while (i <= a.top)
 	{
-		if (a.arr[i] > n && small < a.arr[i])
+		if (a.arr[i] > n && small > a.arr[i])
 		{
 			small = a.arr[i];
 			target_pos = i;
 		}
 		i++;
 	}
+	//ft_printf("n = %d, target= %d\n", n, a.arr[target_pos]);
 	return (target_pos);
 }

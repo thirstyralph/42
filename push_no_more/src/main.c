@@ -10,6 +10,8 @@ int	main(int argc, char *argv[])
 	a.arr = parse(argc, argv);
 	a.name = 'a';
 	b.name = 'b';
+	a.max_size = argc - 2;
+	b.max_size = argc - 2;
 	// malloc b.arr
 	if (a.top == 1)
 		sort_two(&a);
@@ -18,6 +20,8 @@ int	main(int argc, char *argv[])
 	else
 	{
 		b.arr = malloc(sizeof(int) * (argc - 1));
+		if (!b.arr)
+			return (1);
 		b.top = -1;
 		turk(&a, &b);
 		free(b.arr);

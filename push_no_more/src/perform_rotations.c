@@ -31,8 +31,7 @@ void	do_rotation(t_stack *a, t_stack *b, t_mov movs)
 	i = 0;
 	while (i < movs.rr)
 	{
-		rotate(a);
-		rotate(b);
+		double_rotate(a, b);
 		i++;
 	}
 }
@@ -48,23 +47,22 @@ void	do_reverse_rotation(t_stack *a, t_stack *b, t_mov movs)
 		i++;
 	}
 	i = 0;
-	while (i < movs.rra)
+	while (i < movs.rrb)
 	{
 		reverse_rotate(b);
 		i++;
 	}
 	i = 0;
-	while (i < movs.rra)
+	while (i < movs.rrr)
 	{
-		reverse_rotate(b);
-		reverse_rotate(a);
+		double_reverse(a, b);
 		i++;
 	}
 }
 
 void	perform_rotations(t_stack *a, t_stack *b, t_mov movs)
 {
-	do_rotation(a, b, movs);
 	do_reverse_rotation(a, b, movs);
+	do_rotation(a, b, movs);
 	push(a, b);
 }

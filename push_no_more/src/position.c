@@ -22,7 +22,7 @@ int	single_cost(int pos, int top, int middle)
 	if (pos >= middle)
 		return (top - pos);
 	else
-		return (pos++);
+		return (pos + 1);
 }
 
 int	median(int top, int target_a)

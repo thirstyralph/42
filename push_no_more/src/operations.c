@@ -14,41 +14,24 @@
 
 void	swap(t_stack *stack)
 {
-	int	tmp;
-	int	top;
-
-	top = stack->top;
-	tmp = stack->arr[top];
-	stack->arr[top] = stack->arr[top - 1];
-	stack->arr[top - 1] = tmp;
-	stack->top--;
+	_swap(stack);
 	ft_printf("s%c\n", stack->name);
 }
 
 void	rotate(t_stack *stack)
 {
-	int	tmp;
-
-	tmp = stack->arr[stack->top];
-	ft_memmove(&stack->arr[1], &stack->arr[0], stack->top);
-	stack->arr[0] = tmp;
+	_rotate(stack);
 	ft_printf("r%c\n", stack->name);
 }
 
 void	reverse_rotate(t_stack *stack)
 {
-	int	tmp;
-
-	tmp = stack->arr[0];
-	ft_memmove(&stack->arr[0], &stack->arr[1], stack->top);
-	stack->arr[stack->top] = tmp;
+	_reverse_rotate(stack);
 	ft_printf("rr%c\n", stack->name);
 }
 
 void	push(t_stack *target, t_stack *source)
 {
-	target->top++;
-	target->arr[target->top] = source->arr[source->top];
-	source->top--;
+	_push(target, source);
 	ft_printf("p%c\n", target->name);
 }

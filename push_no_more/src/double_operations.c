@@ -14,21 +14,21 @@
 
 void	double_rotate(t_stack *a, t_stack *b)
 {
-	rotate(a);
-	rotate(b);
+	_rotate(a);
+	_rotate(b);
 	ft_printf("rr\n");
 }
 
 void	double_swap(t_stack *a, t_stack *b)
 {
-	swap(a);
-	swap(b);
-	ft_printf("rr\n");
+	_swap(a);
+	_swap(b);
+	ft_printf("ss\n");
 }
 
 void	double_reverse(t_stack *a, t_stack *b)
 {
-	reverse_rotate(a);
-	reverse_rotate(b);
-	ft_printf("rr\n");
+	_reverse_rotate(a);
+	_reverse_rotate(b);
+	ft_printf("rrr\n");
 }

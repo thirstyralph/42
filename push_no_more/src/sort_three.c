@@ -61,15 +61,15 @@ int	smallest(int *arr, int top)
 
 void	sort_three(t_stack *a)
 {
-	int	big;
-	int	small;
+	while (is_sorted(*a) == 0)
+	{
+		ft_printf("no esta ordenado todavia\n");
+		if (a->arr[2] > a->arr[1])
+			swap(a);
+		if (a->arr[1] > a->arr[0])
+			reverse_rotate(a);
+		ft_printf("2 = %d\n1 = %d\n0 = %d\n", a->arr[2], a->arr[1], a->arr[0]);
 
-	big = biggest(a->arr, a->top);
-	small = smallest(a->arr, a->top);
-	if (big == 1)
-		reverse_rotate(a);
-	else if (big == 2)
-		rotate(a);
-	if (small == 1)
-		swap(a);
+
+	}
 }

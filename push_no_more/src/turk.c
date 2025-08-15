@@ -2,15 +2,27 @@
 
 void	move_all_but_three(t_stack *a, t_stack *b)
 {
-	while (a->top > 3)
+	while (a->top > 2)
 		push(b, a);
 }
 
 void	turk(t_stack *a, t_stack *b)
 {
+	int	*cost;
+
 	move_all_but_three(a, b);
 	while (b->top >= 0 )
 	{
-		plan_and_move(smallest(calculate_cost(*a, *b), b->top), a, b);
+		cost = calculate_cost(*a, *b);
+		plan_and_move(smallest(cost, b->top), a, b);
+	/*
+		while (is_sorted(*a) == 0)
+		{
+			reverse_rotate(a);
+		}
+	*/
+		free(cost);
 	}
+
+
 }
