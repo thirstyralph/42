@@ -12,6 +12,7 @@
 #include <limits.h>
 #include "./../push_swap.h"
 
+/*
 int	smallest(int *tab, int top)
 {
 	int	i;
@@ -32,7 +33,7 @@ int	smallest(int *tab, int top)
 	}
 	return (min_pos);
 }
-
+*/
 /*
 void	loop_rrr(t_stack *a, t_stack *b, int laps)
 {
@@ -133,7 +134,7 @@ void	do_reverse_rotation(t_stack *a, t_stack *b, t_mov movs)
 	}
 }
 
-void	perform(t_stack *a, t_stack *b, t_mov movs)
+void	perform_rotations(t_stack *a, t_stack *b, t_mov movs)
 {
 	do_rotation(a, b, movs);
 	do_reverse_rotation(a, b, movs);

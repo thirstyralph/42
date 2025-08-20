@@ -30,13 +30,12 @@ int	target(t_stack a, int n)
 	i = 0;
 	while (i <= a.top)
 	{
-		if (a.arr[i] > n && small > a.arr[i])
+		if (a.arr[i] > n && small < a.arr[i])
 		{
 			small = a.arr[i];
 			target_pos = i;
 		}
 		i++;
 	}
-	//ft_printf("n = %d, target= %d\n", n, a.arr[target_pos]);
 	return (target_pos);
 }

@@ -1,22 +1,65 @@
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g
-NAME		= fractol
-OBJS		= $(SRCS:.c=.o) $(LIBFT_SRCS:.c=.o)
-SRC_DIR		=.
-LIBFT_DIR	= libft
-SRCS		=$(wildcard $(SRC_DIR)/*.c)
-LIBFT_SRCS	=$(wildcard $(LIBFT_DIR)/*.c)
+# ---------------- Configuración ----------------
+NAME      = fract-ol
+CC        = cc
+RM        = rm -rf
 
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+# Flags de compilación y preprocesador
+CFLAGS		= -Wall -Wextra -Werror
+CPPFLAGS	= -I. -Iinclude -Iminilibx-linux
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+LIBFTPATH	= include/libft
+LIBFTLIB	= $(LIBFTPATH)/libft.a
 
+# MiniLibX (Linux)
+MLXPATH	= minilibx-linux
+MLXLIB	= $(MLXPATH)/libmlx_Linux.a
+
+# Enlazado
+LDFLAGS   = 
+LDLIBS    = -lXext -lX11 -lm -lz
+
+# Fuentes y objetos
+SRCS	= $(wildcard src/*.c)
+OBJS	= $(SRCS:src/%.c=obj/%.o)
+DEPS	= $(OBJS:.o=.d)
+
+# ---------------- Targets ----------------
+all: $(NAME)
+
+# Crear ejecutable
+$(NAME): $(MLXLIB) $(LIBFTLIB) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(MLXLIB) $(LIBFTLIB) $(LDLIBS) -o $@
+	@echo "\nfract-ol compiled\n"
+
+$(LIBFTLIB):
+	$(MAKE) -C $(LIBFTPATH)
+
+# Compilar MiniLibX primero
+$(MLXLIB):
+	$(MAKE) -C $(MLXPATH)
+
+# Carpeta de objetos
+obj:
+	mkdir -p obj
+
+# Compilación de objetos (con headers)
+obj/%.o: src/%.c | obj
+	$(CC) $(CPPFLAGS) $(CFLAGS) -MMD -MP -c $< -o $@
+
+# Dependencias automáticas
+-include $(DEPS)
+
+# Limpiar objetos
 clean:
-	rm -f $(OBJS)
+	$(RM) obj
+	$(MAKE) -C $(MLXPATH) clean
+
+# Limpiar todo
 fclean: clean
-	rm -f $(OBJS)
+	$(RM) $(NAME)
+
+# Reconstrucción completa
 re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: all clean fclean re
+

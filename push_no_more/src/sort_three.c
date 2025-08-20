@@ -63,12 +63,10 @@ void	sort_three(t_stack *a)
 {
 	while (is_sorted(*a) == 0)
 	{
-		ft_printf("no esta ordenado todavia\n");
 		if (a->arr[2] > a->arr[1])
 			swap(a);
 		if (a->arr[1] > a->arr[0])
 			reverse_rotate(a);
-		ft_printf("2 = %d\n1 = %d\n0 = %d\n", a->arr[2], a->arr[1], a->arr[0]);
 
 
 	}

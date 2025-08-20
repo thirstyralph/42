@@ -1,14 +1,8 @@
-#include "./../fract-ol.h"
+#include "./../fractol.h"
 #include <stdio.h>
 
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
+
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -30,7 +24,7 @@ void	horizontal_line(t_data *data, int start, int end, int y, int color)
 	}
 }
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -38,6 +32,15 @@ int	main(void)
 	int		i;
 
 
+	//actual code that I want to use
+	//the parameters are parsed
+	parse(argc, argv);
+	//the display struct is filled with preliminary values
+	//first I have to merge my display struct and the one here
+	// one of two display loop functions is choosen depending on the parameters
+	// if J, julia_loop
+	// if M, Mandelbrot_loop
+	
 	i = 0;
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");

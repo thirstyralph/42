@@ -21,7 +21,6 @@ int	is_sorted(t_stack stack)
 	{
 		if (stack.arr[i] < stack.arr[i + 1])
 		{
-			ft_printf("na, not sorted\n");
 			return (0);
 		}
 		i++;

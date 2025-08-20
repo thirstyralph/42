@@ -1,6 +1,12 @@
 /*
 	calculates the necesary actions to move given position of the stack a
 	 to the top and writes them into the movement structure accordingly
+	t_mo *seq: pointer to the sequence array.
+	int middle: median of the stack tha where our target is located
+				1 = below the median
+				2 = above the median
+	top: top value of the stack
+	pos: position of the number we want to move to the top
 */
 void	determine_single_ops_a(t_mov *seq, int middle, int top, int pos)
 {
@@ -13,6 +19,12 @@ void	determine_single_ops_a(t_mov *seq, int middle, int top, int pos)
 /*
 	calculates the necesary actions to move given position of the stack b
 	 to the top and writes them into the movement structure accordingly
+	t_mov *seq: pointer to the sequence array.
+	int middle: median of the stack tha where our target is located
+				1 = below the median
+				2 = above the median
+	top: top value of the stack
+	pos: position of the number we want to move to the top
 */
 void	determine_single_ops_b(t_mov *seq, int middle, int top, int pos)
 {
@@ -61,7 +73,22 @@ void	optimise(t_mov *seq)
 	it retuns the number of necessary operations needed to 
 	move b into a
 */
-t_mov	
+t_mov	calculate_movs(int top_a, int top_b, int target_a, int target_b)
+{
+	t_mov	seq;
+	int		middle_a;
+	int		middle_b;
+
+	seq.ra = 0
+	seq.rra = 0
+	seq.rb = 0
+	seq.rrb = 0
+	seq.rrr = 0;
+	seq.rr = 0;
+	determine_single_ops_a(&seq, 
+
+}
+
 t_cost	optimised_cost(int top_a, int top_b, int target_a, int target_b)
 {
 	int	middle_a;
