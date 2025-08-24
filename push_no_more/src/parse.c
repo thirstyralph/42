@@ -44,8 +44,8 @@ int	check_repetition(int top, int *tab)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i <= top)
+	i = top;
+	while (i <= 0)
 	{
 		j = 0;
 		while (j <= top)
@@ -59,12 +59,36 @@ int	check_repetition(int top, int *tab)
 	return (1);
 }
 
+int	only_digits(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-')
+		i++;
+	while (str[i])
+	{
+		if ((str[i] < '0' || str[i] > '9'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	*parse(int argc, char *argv[])
 {
 	int	*tmp;
+	int	i;
 
 	if (argc <= 2)
 		error();
+	i = 1;
+	while (i < argc - 1)
+	{
+		if (only_digits(argv[i]) == 0)
+			error();
+		i++;
+	}
 	tmp = arrtoi(argc, argv);
 	if (check_repetition(argc - 2, tmp) == 0)
 	{

@@ -61,13 +61,12 @@ int	smallest(int *arr, int top)
 
 void	sort_three(t_stack *a)
 {
-	while (is_sorted(*a) == 0)
+	while (!is_sorted(*a))
 	{
 		if (a->arr[2] > a->arr[1])
 			swap(a);
 		if (a->arr[1] > a->arr[0])
 			reverse_rotate(a);
-
-
+//		print_stacks(*a, *a);
 	}
 }

@@ -41,9 +41,9 @@ void	_reverse_rotate(t_stack *stack)
 
 	if (stack->top > 0)
 	{
-	tmp = stack->arr[0];
-	ft_memmove(&stack->arr[0], &stack->arr[1], stack->top * sizeof(int));
-	stack->arr[stack->top] = tmp;
+		tmp = stack->arr[0];
+		ft_memmove(&stack->arr[0], &stack->arr[1], stack->top * sizeof(int));
+		stack->arr[stack->top] = tmp;
 	}
 }
 

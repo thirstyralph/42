@@ -47,9 +47,10 @@ int	*calculate_cost(t_stack a, t_stack b)
 	i = 0;
 	while (i <= b.top)
 	{
+		printf("calculate_cost, i = %d\n", i);
 		current_target = target(a, b.arr[i]);
 		result[i] = optimised_cost(a.top, b.top, current_target, i);
 		i++;
 	}
-		return (result);
+	return (result);
 }

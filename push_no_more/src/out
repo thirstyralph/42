@@ -47,11 +47,12 @@ int	*calculate_cost(t_stack a, t_stack b)
 	i = 0;
 	while (i <= b.top)
 	{
+		printf("calculate_cost, i = %d\n", i);
 		current_target = target(a, b.arr[i]);
 		result[i] = optimised_cost(a.top, b.top, current_target, i);
 		i++;
 	}
-		return (result);
+	return (result);
 }
 #include "./../push_swap.h"
 
@@ -68,9 +69,9 @@ int	*calculate_cost(t_stack a, t_stack b)
 void	determine_single_ops_a(t_mov *seq, int middle, int top, int pos)
 {
 	if (middle == 1)
-		seq->ra = top - pos;
+		seq->ra =  top - pos;
 	else if (middle == 2)
-		seq->rra = pos;
+		seq->rra =  pos + 1;
 }
 
 /*
@@ -81,14 +82,14 @@ void	determine_single_ops_a(t_mov *seq, int middle, int top, int pos)
 				1 = below the median
 				2 = above the median
 	top: top value of the stack
-	pos: position of the number we want to move to the top
+	pwos: position of the number we want to move to the top
 */
 void	determine_single_ops_b(t_mov *seq, int middle, int top, int pos)
 {
 	if (middle == 1)
-		seq->rb = top - pos;
+		seq->rb  = top - pos;
 	else if (middle == 2)
-		seq->rrb = pos;
+		seq->rrb =  pos + 1;
 }
 
 /*
@@ -147,6 +148,8 @@ t_mov	calculate_movs(int top_a, int top_b, int target_a, int target_b)
 	middle_b = median(top_b, target_b);
 	determine_single_ops_a(&seq, middle_a, top_a, target_a);
 	determine_single_ops_b(&seq, middle_b, top_b, target_b);
+	print_operations(seq);
+	printf("\n\n");
 	optimise(&seq);
 	return (seq);
 }
@@ -227,9 +230,9 @@ void	_reverse_rotate(t_stack *stack)
 
 	if (stack->top > 0)
 	{
-	tmp = stack->arr[0];
-	ft_memmove(&stack->arr[0], &stack->arr[1], stack->top * sizeof(int));
-	stack->arr[stack->top] = tmp;
+		tmp = stack->arr[0];
+		ft_memmove(&stack->arr[0], &stack->arr[1], stack->top * sizeof(int));
+		stack->arr[stack->top] = tmp;
 	}
 }
 
@@ -275,12 +278,43 @@ int	is_sorted(t_stack stack)
 {
 	int	i;
 
-	i = stack.top;
-	while (i > 1)
+	i = 0;
+	while (i < stack.top)
 	{
-		if (stack.arr[i] > stack.arr[i - 1])
+		if (stack.arr[i] < stack.arr[i + 1])
+		{
 			return (0);
-		i--;
+		}
+		i++;
+	}
+	return (1);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/05 01:09:43 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/05 04:02:47 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "./../push_swap.h"
+
+int	is_sorted(t_stack stack)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack.top)
+	{
+		if (stack.arr[i] > stack.arr[i + 1])
+		{
+			return (0);
+		}
+		i++;
 	}
 	return (1);
 }
@@ -299,6 +333,7 @@ int	main(int argc, char *argv[])
 	a.max_size = argc - 2;
 	b.max_size = argc - 2;
 	// malloc b.arr
+//	ft_printf("a2 = %d\na1 = %d\na0 = %d\n", a.arr[2], a.arr[1], a.arr[0]);
 	if (a.top == 1)
 		sort_two(&a);
 	else if (a.top == 2)
@@ -309,6 +344,7 @@ int	main(int argc, char *argv[])
 		if (!b.arr)
 			return (1);
 		b.top = -1;
+		print_stacks(a, b);
 		turk(&a, &b);
 		free(b.arr);
 	}
@@ -398,8 +434,8 @@ int	check_repetition(int top, int *tab)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i <= top)
+	i = top;
+	while (i <= 0)
 	{
 		j = 0;
 		while (j <= top)
@@ -413,12 +449,36 @@ int	check_repetition(int top, int *tab)
 	return (1);
 }
 
+int	only_digits(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-')
+		i++;
+	while (str[i])
+	{
+		if ((str[i] < '0' || str[i] > '9'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	*parse(int argc, char *argv[])
 {
 	int	*tmp;
+	int	i;
 
 	if (argc <= 2)
 		error();
+	i = 1;
+	while (i < argc - 1)
+	{
+		if (only_digits(argv[i]) == 0)
+			error();
+		i++;
+	}
 	tmp = arrtoi(argc, argv);
 	if (check_repetition(argc - 2, tmp) == 0)
 	{
@@ -493,7 +553,7 @@ void	perform_rotations(t_stack *a, t_stack *b, t_mov movs)
 {
 	do_reverse_rotation(a, b, movs);
 	do_rotation(a, b, movs);
-	push(a, b);
+	//push(a, b);
 }
 #include "./../push_swap.h"
 
@@ -503,8 +563,12 @@ void	plan_and_move(int pos, t_stack *a, t_stack *b)
 	int		target_a;
 
 	target_a = target(*a, pos);
+	ft_printf("(esto viene de plan_and_move) pos = %d number = %d, target = %d, number = %d\n", pos,b->arr[pos], target_a, a->arr[target_a]);
 	seq = calculate_movs(a->top, b->top, target_a, pos);
+	print_operations(seq);
 	perform_rotations(a, b, seq);
+
+	push(a, b);
 }
 
 /* ************************************************************************** */
@@ -536,7 +600,7 @@ int	single_cost(int pos, int top, int middle)
 
 int	median(int top, int target_a)
 {
-	if (target_a >= middle(top))
+	if (target_a > top / 2)
 		return (2);
 	else
 		return (1);
@@ -549,6 +613,32 @@ int	max(int a, int b)
 	else
 		return (b);
 }
+#include "../push_swap.h"
+
+void	print_stacks(t_stack a, t_stack b)
+{
+	int	max;
+
+	if (a.top > b.top)
+		max = a.top;
+	else
+		max = b.top;
+	ft_printf("AAAAAAAABBBBBBBB\n");
+	while (max >= 0)
+	{
+		if (max <= a.top)
+			ft_printf("==%d== ", a.arr[max]);
+		if(max <= b.top)
+			ft_printf("==%d==", b.arr[max]);
+		ft_printf("\n");
+		max--;
+	}
+}
+
+void	print_operations(t_mov m)
+{
+	printf("ra = %d\n rra = %d\n rb = %d\n rrb = %d\n 	rrr = %d\n rr = %d\n", m.ra, m.rra, m.rb, m.rrb, m.rrr, m.rr);
+}
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -557,7 +647,8 @@ int	max(int a, int b)
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 16:14:49 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/05 16:40:21 by ranavarr         ###   ########.fr       */ /*                                                                            */
+/*   Updated: 2025/08/05 16:40:21 by ranavarr         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
@@ -611,12 +702,14 @@ int	smallest(int *arr, int top)
 
 void	sort_three(t_stack *a)
 {
-	if (a->arr[2] > a->arr[1])
-		swap(a);
-	if (a->arr[1] > a->arr[0])
-		reverse_rotate(a);
-	if (a->arr[2] > a->arr[1])
-		swap(a);
+	while (!is_sorted(*a))
+	{
+		if (a->arr[2] > a->arr[1])
+			swap(a);
+		if (a->arr[1] > a->arr[0])
+			reverse_rotate(a);
+//		print_stacks(*a, *a);
+	}
 }
 /* ************************************************************************** */
 /*                                                                            */
@@ -661,6 +754,126 @@ void	sort_two(t_stack *a)
 int	target(t_stack a, int n)
 {
 	int	i;
+	int	j;
+
+	j = 1;
+	printf("n = %d ", n);
+	while (n + j <= a.arr[biggest(a.arr, a.top)])
+	{
+		i = 0;
+		while(i <= a.top)
+		{
+			if (n + j == a.arr[i])
+			{
+				printf("???target_pos = %d\n", i);
+				return(i);
+			}
+			i++;
+		}
+		j++;
+	}
+	return (smallest(a.arr, a.top));
+}
+/*
+	target_pos = smallest(a.arr, a.top);
+	small = INT_MAX;
+	i = 0;
+	while (i <= a.top)
+	{
+		printf("target loop n%d/%d, our b number is %d\n", i, a.top, n);
+		if (a.arr[i] > n && a.arr[i] < small)
+		{
+			printf("WTF Brother, is a.arr[i]= %d bigger than n=%d\n", a.arr[i], n);
+			small = a.arr[i];
+			target_pos = i;
+		}
+		
+		i++;
+	}
+	if (small != INT_MAX)
+	{
+		if (target_pos + 1 <= a.top)
+			return (target_pos + 1);
+		else
+			return(0);
+	}
+	return (target_pos);
+
+}
+
+
+int	target(t_stack a, int n)
+{
+	int	i;
+	int	target_pos;
+	int	small;
+
+	target_pos = smallest(a.arr, a.top);
+	small = INT_MAX;
+	
+	printf("=== TARGET DEBUG for n=%d ===\n", n);
+	printf("Stack A contents: ");
+	for (int j = 0; j <= a.top; j++) {
+		printf("a[%d]=%d ", j, a.arr[j]);
+	}
+	printf("\n");
+	printf("Initial target_pos from smallest() = %d (value = %d)\n", target_pos, a.arr[target_pos]);
+	printf("Looking for smallest value > %d\n", n);
+	
+	i = 0;
+	while (i <= a.top)
+	{
+		printf("Checking a[%d]=%d: ", i, a.arr[i]);
+		if (a.arr[i] > n && a.arr[i] < small)
+		{
+			printf("✓ Found better target! %d > %d and %d < %d\n", 
+				a.arr[i], n, a.arr[i], small);
+			small = a.arr[i];
+			target_pos = i;
+			printf("  Updated: small=%d, target_pos=%d\n", small, target_pos);
+		}
+		else if (a.arr[i] > n)
+		{
+			printf("✗ %d > %d but %d >= %d (not smaller than current best)\n", 
+				a.arr[i], n, a.arr[i], small);
+		}
+		else
+		{
+			printf("✗ %d <= %d\n", a.arr[i], n);
+		}
+		i++;
+	}
+	
+	printf("Final result: target_pos=%d (value=%d)\n", target_pos, a.arr[target_pos]);
+	printf("=== END TARGET DEBUG ===\n\n");
+	
+	return (target_pos);
+}
+*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   target.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/05 03:32:42 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/07 23:00:08 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../push_swap.h"
+#include "stdio.h"
+
+/*
+	receives:
+	t_stack a
+	int n;
+	returns: int position of the target
+*/
+int	target(t_stack a, int n)
+{
+	int	i;
 	int	target_pos;
 	int	small;
 
@@ -669,14 +882,15 @@ int	target(t_stack a, int n)
 	i = 0;
 	while (i <= a.top)
 	{
-		if (a.arr[i] > n && small > a.arr[i])
+		printf("target loop n%d/%d, our b number is %d\n", i, a.top, n);
+		if (a.arr[i] > n && a.arr[i] < small)
 		{
+			printf("WTF Brother, is a.arr[i]= %d bigger than n=%d\n", a.arr[i], n);
 			small = a.arr[i];
 			target_pos = i;
 		}
 		i++;
 	}
-	//ft_printf("n = %d, target= %d\n", n, a.arr[target_pos]);
 	return (target_pos);
 }
 #include "./../push_swap.h"
@@ -684,7 +898,9 @@ int	target(t_stack a, int n)
 void	move_all_but_three(t_stack *a, t_stack *b)
 {
 	while (a->top > 2)
+	{	
 		push(b, a);
+	}
 }
 
 void	turk(t_stack *a, t_stack *b)
@@ -692,18 +908,23 @@ void	turk(t_stack *a, t_stack *b)
 	int	*cost;
 
 	move_all_but_three(a, b);
+	sort_three(a);
+	print_stacks(*a, *b);
 	while (b->top >= 0 )
 	{
+		ft_printf("iteration %d\n", b->top);
+		print_stacks(*a, *b);
 		cost = calculate_cost(*a, *b);
 		plan_and_move(smallest(cost, b->top), a, b);
-	/*
-		while (is_sorted(*a) == 0)
-		{
-			reverse_rotate(a);
-		}
-	*/
+		print_stacks(*a, *b);
+		print_stacks(*a, *b);
 		free(cost);
 	}
-
-
+	/*
+	while (is_sorted(*a) == 0)
+	{
+		reverse_rotate(a);
+	}
+	*/
+	print_stacks(*a, *b);
 }

@@ -13,9 +13,9 @@
 void	determine_single_ops_a(t_mov *seq, int middle, int top, int pos)
 {
 	if (middle == 1)
-		seq->ra = top - pos;
+		seq->ra =  top - pos;
 	else if (middle == 2)
-		seq->rra = pos;
+		seq->rra =  pos + 1;
 }
 
 /*
@@ -26,14 +26,14 @@ void	determine_single_ops_a(t_mov *seq, int middle, int top, int pos)
 				1 = below the median
 				2 = above the median
 	top: top value of the stack
-	pos: position of the number we want to move to the top
+	pwos: position of the number we want to move to the top
 */
 void	determine_single_ops_b(t_mov *seq, int middle, int top, int pos)
 {
 	if (middle == 1)
-		seq->rb = top - pos;
+		seq->rb  = top - pos;
 	else if (middle == 2)
-		seq->rrb = pos;
+		seq->rrb =  pos + 1;
 }
 
 /*
@@ -92,6 +92,8 @@ t_mov	calculate_movs(int top_a, int top_b, int target_a, int target_b)
 	middle_b = median(top_b, target_b);
 	determine_single_ops_a(&seq, middle_a, top_a, target_a);
 	determine_single_ops_b(&seq, middle_b, top_b, target_b);
+//	print_operations(seq);
+	printf("\n\n");
 	optimise(&seq);
 	return (seq);
 }
