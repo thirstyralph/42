@@ -1,15 +1,53 @@
+AAAAAAAABBBBBBBB
+==3== 
+==4== 
+==2== 
+==1== 
 pb
-pb
-pb
-rrr
-rrr
+sa
+rra
+AAAAAAAABBBBBBBB
+==1== 
+==2== 
+==4== ==3==
+iteration 0
+AAAAAAAABBBBBBBB
+==1== 
+==2== 
+==4== ==3==
+(esto viene de plan_and_move) pos = 0 number = 3, target = 0, number = 4
+ra
+ra
 pa
-rra
-rra
-rra
-pa
-rra
-rra
-rra
-rra
-pa
+AAAAAAAABBBBBBBB
+==3== 
+==4== 
+==1== 
+==2== 
+AAAAAAAABBBBBBBB
+==3== 
+==4== 
+==1== 
+==2== 
+AAAAAAAABBBBBBBB
+==3== 
+==4== 
+==1== 
+==2== 
+calculate_cost, i = 0
+n = 3 ???target_pos = 0
+n = 3 ???target_pos = 0
+ra = 2
+ rra = 0
+ rb = 0
+ rrb = 0
+ 	rrr = 0
+ rr = 0
+
+
+ra = 2
+ rra = 0
+ rb = 0
+ rrb = 0
+ 	rrr = 0
+ rr = 0

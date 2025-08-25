@@ -67,6 +67,5 @@ void	sort_three(t_stack *a)
 			swap(a);
 		if (a->arr[1] > a->arr[0])
 			reverse_rotate(a);
-//		print_stacks(*a, *a);
 	}
 }

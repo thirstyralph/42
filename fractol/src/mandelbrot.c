@@ -17,11 +17,25 @@ int	mandelbrot(t_complex c, int limit)
 	int			i;
 
 	i = 0;
-	tmp = c;
-	while (mod_squared(tmp) < 2 && i <= limit)
+	tmp.re = 0;
+	tmp.im = 0;
+	while (mod_squared(tmp) <= 4 && i < limit)
 	{
-		
+		tmp = add(mul(tmp, tmp), c);
+		i++;
 	}
+	return (1);
 }
-mandelbrot_loop(
+
+void	mandelbrot_loop(t_data *data, t_conf config)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (y >=
+}
+
+
 

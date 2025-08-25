@@ -92,7 +92,6 @@ t_mov	calculate_movs(int top_a, int top_b, int target_a, int target_b)
 	middle_b = median(top_b, target_b);
 	determine_single_ops_a(&seq, middle_a, top_a, target_a);
 	determine_single_ops_b(&seq, middle_b, top_b, target_b);
-//	print_operations(seq);
 	printf("\n\n");
 	optimise(&seq);
 	return (seq);

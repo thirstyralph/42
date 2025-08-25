@@ -16,7 +16,6 @@ void	turk(t_stack *a, t_stack *b)
 	sort_three(a);
 	while (b->top >= 0 )
 	{
-		print_stacks(*a, *b);
 		cost = calculate_cost(*a, *b);
 		plan_and_move(smallest(cost, b->top), a, b);
 		free(cost);
