@@ -24,30 +24,20 @@ int	optimised_cost(int top_a, int top_b, int target_a, int target_b)
 	middle_b = median(top_b, target_b);
 	cost_a = single_cost(target_a, top_a, middle_a);
 	cost_b = single_cost(target_b, top_b, middle_b);
-	//ft_printf("middle_a = %d ", middle_a);
-	//ft_printf("middle_b = %d ", middle_b);
 	if (middle_a == 1 && middle_b == 1)
 	{
-		//ft_printf("a[%d] y b[%d] estan abajo , cost_a = %d y cost_b = %d", target_a, target_b, cost_a, cost_b);
 		cost_total = max(cost_a, cost_b);
-		//ft_printf("cost_total = %d\n", cost_total);
 	}
-	else if  (middle_a == 2 && middle_b == 2)
+	else if (middle_a == 2 && middle_b == 2)
 	{
-		//ft_printf("a[%d] y b[%d] estan arriba , cost_a = %d y cost_b = %d", target_a, target_b, cost_a, cost_b);
-
 		cost_total = max(cost_a, cost_b);
-		//ft_printf("cost_total = %d\n", cost_total);
 	}
 	else
 	{
-		//ft_printf("a[%d] y b[%d] estan locos , cost_a = %d y cost_b = %d", target_a, target_b, cost_a, cost_b);
 		cost_total = cost_a + cost_b;
-		//ft_printf("cost_total = %d\n", cost_total);
 	}
 	return (cost_total);
 }
-
 
 /*
 	must take stacks a and b

@@ -2,27 +2,19 @@
 
 int	main(int argc, char *argv[])
 {
-	// declara las estructuras
 	t_stack	a;
 	t_stack	b;
-	// t_stack a.arr = parse
+
 	a.top = argc - 2;
 	a.arr = parse(argc, argv);
 	a.name = 'a';
 	b.name = 'b';
 	a.max_size = argc - 2;
 	b.max_size = argc - 2;
-	// malloc b.arr
 	if (a.top == 1)
-	{
-		ft_printf("+++mad thing happen\n");
 		sort_two(&a);
-	}
 	else if (a.top == 2)
-	{
-		ft_printf("+++mad thing happen\n");
 		sort_three(&a);
-	}
 	else
 	{
 		b.arr = malloc(sizeof(int) * (argc - 1));

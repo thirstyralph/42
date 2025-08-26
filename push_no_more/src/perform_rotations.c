@@ -64,5 +64,4 @@ void	perform_rotations(t_stack *a, t_stack *b, t_mov movs)
 {
 	do_reverse_rotation(a, b, movs);
 	do_rotation(a, b, movs);
-	//push(a, b);
 }

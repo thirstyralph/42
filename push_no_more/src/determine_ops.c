@@ -2,7 +2,7 @@
 
 /*
 	calculates the necesary actions to move given position of the stack a
-	 to the top and writes them into the movement structure accordingly
+	to the top and writes them into the movement structure accordingly
 	t_mo *seq: pointer to the sequence array.
 	int middle: median of the stack tha where our target is located
 				1 = below the median
@@ -13,9 +13,9 @@
 void	determine_single_ops_a(t_mov *seq, int middle, int top, int pos)
 {
 	if (middle == 2)
-		seq->ra =  top - pos;
+		seq->ra = top - pos;
 	else if (middle == 1)
-		seq->rra =  pos + 1;
+		seq->rra = pos + 1;
 }
 
 /*
@@ -31,9 +31,9 @@ void	determine_single_ops_a(t_mov *seq, int middle, int top, int pos)
 void	determine_single_ops_b(t_mov *seq, int middle, int top, int pos)
 {
 	if (middle == 2)
-		seq->rb  = top - pos;
+		seq->rb = top - pos;
 	else if (middle == 1)
-		seq->rrb =  pos + 1;
+		seq->rrb = pos + 1;
 }
 
 /*

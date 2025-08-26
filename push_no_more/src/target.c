@@ -28,11 +28,11 @@ int	target(t_stack a, int n)
 	while (n + j <= a.arr[biggest(a.arr, a.top)])
 	{
 		i = 0;
-		while(i <= a.top)
+		while (i <= a.top)
 		{
 			if (n + j == a.arr[i])
 			{
-				return(i);
+				return (i);
 			}
 			i++;
 		}
