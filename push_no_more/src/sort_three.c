@@ -38,6 +38,7 @@ int	biggest(int *arr, int top)
 	return (big_pos);
 }
 
+// returns the position of the smallest element in an array
 int	smallest(int *arr, int top)
 {
 	int	i;

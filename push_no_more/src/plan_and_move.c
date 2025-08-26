@@ -6,7 +6,7 @@ void	plan_and_move(int pos, t_stack *a, t_stack *b)
 	int		target_a;
 
 	target_a = target(*a, b->arr[pos]);
-	printf("in plan and move: target_a = %d, b->arr[pos] = %d", target_a, b->arr[pos]);
+//	ft_printf("in plan and move: target_a = %d, b->arr[pos] = %d\n", target_a, b->arr[pos]);
 	seq = calculate_movs(a->top, b->top, target_a, pos);
 	perform_rotations(a, b, seq);
 

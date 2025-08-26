@@ -12,9 +12,9 @@
 */
 void	determine_single_ops_a(t_mov *seq, int middle, int top, int pos)
 {
-	if (middle == 1)
+	if (middle == 2)
 		seq->ra =  top - pos;
-	else if (middle == 2)
+	else if (middle == 1)
 		seq->rra =  pos + 1;
 }
 
@@ -30,9 +30,9 @@ void	determine_single_ops_a(t_mov *seq, int middle, int top, int pos)
 */
 void	determine_single_ops_b(t_mov *seq, int middle, int top, int pos)
 {
-	if (middle == 1)
+	if (middle == 2)
 		seq->rb  = top - pos;
-	else if (middle == 2)
+	else if (middle == 1)
 		seq->rrb =  pos + 1;
 }
 
@@ -92,7 +92,6 @@ t_mov	calculate_movs(int top_a, int top_b, int target_a, int target_b)
 	middle_b = median(top_b, target_b);
 	determine_single_ops_a(&seq, middle_a, top_a, target_a);
 	determine_single_ops_b(&seq, middle_b, top_b, target_b);
-	printf("\n\n");
 	optimise(&seq);
 	return (seq);
 }

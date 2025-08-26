@@ -54,7 +54,7 @@ int	check_repetition(int top, int *tab)
 				return (0);
 			j++;
 		}
-		i++;
+		i--;
 	}
 	return (1);
 }

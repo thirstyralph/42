@@ -14,17 +14,19 @@
 
 int	middle(int n)
 {
-	return ((n / 2) - (n % 2));
+	return (n / 2);
 }
 
-int	single_cost(int pos, int top, int middle)
+int	single_cost(int pos, int top, int half)
 {
-	if (middle == 1)
+	if (half == 2)
 		return (top - pos);
 	else
 		return (pos + 1);
 }
 
+/*
+*/
 int	median(int top, int target_a)
 {
 	if (target_a > top / 2)

@@ -15,12 +15,12 @@ int	main(int argc, char *argv[])
 	// malloc b.arr
 	if (a.top == 1)
 	{
-		printf("+++mad thing happen\n");
+		ft_printf("+++mad thing happen\n");
 		sort_two(&a);
 	}
 	else if (a.top == 2)
 	{
-		printf("+++mad thing happen\n");
+		ft_printf("+++mad thing happen\n");
 		sort_three(&a);
 	}
 	else
@@ -29,7 +29,7 @@ int	main(int argc, char *argv[])
 		if (!b.arr)
 			return (1);
 		b.top = -1;
-		printf("main\n");
+		ft_printf("main\n");
 		turk(&a, &b);
 		free(b.arr);
 	}

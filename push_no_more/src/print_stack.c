@@ -22,5 +22,5 @@ void	print_stacks(t_stack a, t_stack b)
 
 void	print_operations(t_mov m)
 {
-	printf("ra = %d\n rra = %d\n rb = %d\n rrb = %d\n 	rrr = %d\n rr = %d\n", m.ra, m.rra, m.rb, m.rrb, m.rrr, m.rr);
+	ft_printf("ra = %d\n rra = %d\n rb = %d\n rrb = %d\n 	rrr = %d\n rr = %d\n", m.ra, m.rra, m.rb, m.rrb, m.rrr, m.rr);
 }
