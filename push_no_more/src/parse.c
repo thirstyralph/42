@@ -45,7 +45,7 @@ int	check_repetition(int top, int *tab)
 	int	j;
 
 	i = top;
-	while (i <= 0)
+	while (i >= 0)
 	{
 		j = 0;
 		while (j <= top)

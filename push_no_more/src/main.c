@@ -14,15 +14,22 @@ int	main(int argc, char *argv[])
 	b.max_size = argc - 2;
 	// malloc b.arr
 	if (a.top == 1)
+	{
+		printf("+++mad thing happen\n");
 		sort_two(&a);
+	}
 	else if (a.top == 2)
+	{
+		printf("+++mad thing happen\n");
 		sort_three(&a);
+	}
 	else
 	{
 		b.arr = malloc(sizeof(int) * (argc - 1));
 		if (!b.arr)
 			return (1);
 		b.top = -1;
+		printf("main\n");
 		turk(&a, &b);
 		free(b.arr);
 	}

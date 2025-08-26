@@ -24,8 +24,10 @@ int	optimised_cost(int top_a, int top_b, int target_a, int target_b)
 	middle_b = median(top_b, target_b);
 	cost_a = single_cost(target_a, top_a, middle_a);
 	cost_b = single_cost(target_b, top_b, middle_b);
-	if ((middle_a == 1 && middle_b == 1) || (middle_a == 2 && middle_b == 2))
-		cost_total = max(cost_a, cost_b); 
+	if (middle_a == 1 && middle_b == 1)
+		cost_total = max(cost_a, cost_b);
+	else if  (middle_a == 2 && middle_b == 2)
+		cost_total = max(cost_a, cost_b);
 	else
 		cost_total = cost_b + cost_a;
 	return (cost_total);

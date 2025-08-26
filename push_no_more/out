@@ -1,53 +1,78 @@
-AAAAAAAABBBBBBBB
-==3== 
-==4== 
-==2== 
-==1== 
+pb
+pb
+pb
+pb
+pb
+pb
 pb
 sa
+rrb
+rrb
+rrb
+rrr
+rrr
+rrr
+pa
+rrb
+rrb
+rrr
+rrr
+rrr
+rrr
+pa
+rrr
+rrr
+rrr
+rrr
+pa
+ra
+ra
+rr
+rr
+pa
 rra
-AAAAAAAABBBBBBBB
-==1== 
-==2== 
-==4== ==3==
-iteration 0
-AAAAAAAABBBBBBBB
-==1== 
-==2== 
-==4== ==3==
-(esto viene de plan_and_move) pos = 0 number = 3, target = 0, number = 4
+rra
+rra
+rra
+rra
+rb
+pa
+rra
+rra
+rra
+rra
+rra
+rrr
+rrr
+pa
+ra
+ra
 ra
 ra
 pa
-AAAAAAAABBBBBBBB
-==3== 
-==4== 
-==1== 
-==2== 
-AAAAAAAABBBBBBBB
-==3== 
-==4== 
-==1== 
-==2== 
-AAAAAAAABBBBBBBB
-==3== 
-==4== 
-==1== 
-==2== 
-calculate_cost, i = 0
-n = 3 ???target_pos = 0
-n = 3 ???target_pos = 0
-ra = 2
- rra = 0
- rb = 0
- rrb = 0
- 	rrr = 0
- rr = 0
+rra
+main
+turk has started
+all but three have been pushed
+a has been sorted 
+wonoblle
+in plan and move: target_a = 2, b->arr[pos] = 1
 
+wonoblle
+in plan and move: target_a = 3, b->arr[pos] = 9
 
-ra = 2
- rra = 0
- rb = 0
- rrb = 0
- 	rrr = 0
- rr = 0
+wonoblle
+in plan and move: target_a = 3, b->arr[pos] = 10
+
+wonoblle
+in plan and move: target_a = 1, b->arr[pos] = 5
+
+wonoblle
+in plan and move: target_a = 4, b->arr[pos] = 7
+
+wonoblle
+in plan and move: target_a = 6, b->arr[pos] = 8
+
+wonoblle
+in plan and move: target_a = 4, b->arr[pos] = 2
+
