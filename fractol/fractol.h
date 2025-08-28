@@ -28,8 +28,6 @@ typedef struct s_config
 {
 	char		set;
 	double		z;
-	double		center;
-	int			zoom;
 	int			max_iterations;
 	int			color;
 }				t_conf;

@@ -46,7 +46,28 @@ int	main(int argc, char *argv[])
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-	
+	/*
+		operation:
+			1. decide which loop to use
+			2 start the loop
+			in the loop:
+				1. para cada pixel de la imagen, calcula el numero de iteraciones
+				2. para cada numero calculado, poner ese valor en la array de pantalla
+			necesito:
+			- funcion mandelbrot (creo que ya la tengo)
+			- funcion asign_color(int iter, int color)
+			- a function for each color scheme??
+			- loop_mandelbrot
+			- loop julia
+				que hacen los loops?
+				- toman el zoom
+				- toman el size de la pantalla
+				- tengo que tener en cuenta el centro tambien
+				- para cada posicion(pixel), calculas el numero de iteraciones para
+					el centro, ajustando con el zoom, fd
+				
+		- funcion que para cada pixel calcule la posicion x e y, ejecute mandelbrot
+			y asigne ese valor a un color 
 	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	while (i <= 1080)

@@ -91,8 +91,5 @@ void	determine_single_ops_b(t_mov *seq, int middle, int top, int pos);
 void	calculate_single_optinization(int *a, int *b, int *double_op);
 void	optimise(t_mov *seq);
 t_mov	calculate_movs(int top_a, int top_b, int target_a, int target_b);
-//print_stack.c
-void	print_stacks(t_stack a, t_stack b);
-void	print_operations(t_mov m);
 
 #endif

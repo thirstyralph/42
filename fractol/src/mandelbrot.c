@@ -29,12 +29,18 @@ int	mandelbrot(t_complex c, int limit)
 
 void	mandelbrot_loop(t_data *data, t_conf config)
 {
-	int	x;
-	int	y;
+	int			window_width;
+	int			window_height;
+	double		zoom;
+	t_complex	center;
 
 	x = 0;
 	y = 0;
-	while (y >=
+	zoom = 1;
+	center.re = 0;
+	center.im = 0;
+	//
+	while (
 }
 
 
