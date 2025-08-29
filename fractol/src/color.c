@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex_ops.c                                      :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 03:14:52 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/29 03:14:53 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/29 04:17:04 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/29 04:53:12 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-//adition
-t_complex	add(t_complex a, t_complex b)
+
+int	calculate_color(t_conf conf, t_data data, int iter)
 {
-	t_complex	r;
-
-	r.re = a.re + b.re;
-	r.im = a.im + a.im;
-	return (r);
-}
-
-//multiplication
-t_complex	mul(t_complex a, t_complex b)
-{
-	t_complex	r;
-
-	r.re = a.re * b.re - (a.im * b.im);
-	r.im = a.re * b.im + (a.im * b.re);
-	return (r);
-}
-
-//modulus (magnitude)
-double	mod_squared(t_complex z)
-{
-	return (z.re * z.re + z.im * z.im);
+	if (iter == conf.max_iterations)
+		return (0x000000);
 }

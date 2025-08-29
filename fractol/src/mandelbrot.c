@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/29 03:13:09 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/29 04:36:03 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../fractol.h"
 
 /*
@@ -27,21 +39,22 @@ int	mandelbrot(t_complex c, int limit)
 	return (1);
 }
 
-void	mandelbrot_loop(t_data *data, t_conf config)
+void	mandelbrot_frame(t_data *data, t_conf conf)
 {
-	int			window_width;
-	int			window_height;
-	double		zoom;
-	t_complex	center;
+	t_complex	pixel;
+	int			y;
+	int			x;
+	int			color;
+	char		*dst;
 
-	x = 0;
-	y = 0;
-	zoom = 1;
-	center.re = 0;
-	center.im = 0;
-	//
-	while (
+	pixel.re = 0;
+	pixel.im = 0;
+	while (pixel.re <= conf.x && pixel.im <= conf.y)
+	{
+		dst = data->addr + (y * data->line_length + x
+				* (data->bits_per_pixel / 8));
+		color = calculate_color(conf.color, conf,
+				mandelbrot(pixel, conf.max_iterations));
+		pixel = next_pixel(conf, pixel);
+	}
 }
-
-
-

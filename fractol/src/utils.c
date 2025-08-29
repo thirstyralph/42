@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   complex_ops.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 03:14:52 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/29 03:14:53 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/29 04:15:44 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/29 04:15:49 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-//adition
-t_complex	add(t_complex a, t_complex b)
+/*
+ * in the complex plane, Y imaginary and X is real
+ */
+t_complex	next_pixel(t_conf conf,	t_complex prev)
 {
 	t_complex	r;
 
-	r.re = a.re + b.re;
-	r.im = a.im + a.im;
+	if (prev.re == conf.x)
+	{
+		r.re = 0;
+		r.im = prev.im + 1;
+	}
+	else
+	{
+		r.re = prev.re + 1;
+		r.im = prev.im;
+	}
 	return (r);
 }
 
-//multiplication
-t_complex	mul(t_complex a, t_complex b)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	t_complex	r;
+	char	*dst;
 
-	r.re = a.re * b.re - (a.im * b.im);
-	r.im = a.re * b.im + (a.im * b.re);
-	return (r);
-}
-
-//modulus (magnitude)
-double	mod_squared(t_complex z)
-{
-	return (z.re * z.re + z.im * z.im);
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

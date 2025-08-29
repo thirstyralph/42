@@ -1,25 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/29 04:12:14 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/29 04:12:31 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../fractol.h"
 #include <stdio.h>
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
-void	horizontal_line(t_data *data, int start, int end, int y, int color)
-{
-	int	i;
-
-	i = start;
-	while (i <= end)
-	{
-		my_mlx_pixel_put(data, i, y++, color);
-		i++;
-	}
-}
 
 int	main(int argc, char *argv[])
 {
