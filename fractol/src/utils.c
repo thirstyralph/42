@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 04:15:44 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/29 04:15:49 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/29 12:34:18 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,9 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+t_complex	as_complex(t_conf conf, x, y)
+{
+	
 }
