@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 00:38:06 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/28 18:15:08 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/29 13:37:28 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	*arrtoi(int argc, char *argv[])
 	result = malloc(sizeof(int) * (argc - 1));
 	if (!result)
 		return (NULL);
-	i = argc - 1;
+	i = argc - 1; //ponle strlen para controlar el longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong
 	while (i > 0)
 	{
 		tmp = ft_strtol(argv[i]);

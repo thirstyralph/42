@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 03:13:09 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/29 12:02:43 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/08/29 14:23:53 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	mandelbrot(t_complex c, int limit)
 	}
 	return (1);
 }
-
+/*
 void	mandelbrot_frame(t_data *data, t_conf *conf)
 {
 	t_complex	pixel;
@@ -47,8 +47,8 @@ void	mandelbrot_frame(t_data *data, t_conf *conf)
 	int			color;
 	char		*dst;
 
-	pixel.re = 0;
-	pixel.im = 0;
+	x = 0;
+	 = 0;
 	while (x <= conf->x && y <= conf->y)
 	{
 		dst = data->addr + (y * data->line_length + x
@@ -58,3 +58,4 @@ void	mandelbrot_frame(t_data *data, t_conf *conf)
 		pixel = next_pixel(*conf, pixel);
 	}
 }
+*/

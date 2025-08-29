@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 03:13:41 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/29 04:37:33 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/29 15:07:05 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/29 15:07:08 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <math.h>
 # include <limits.h>
 # include <complex.h>
-# include "./include/libft/libft.h"
-# include "./include/ft_printf/ft_printf.h"
-# include "mlx.h"
+# include "./lib/libft/libft.h"
+# include "./lib/ft_printf/ft_printf.h"
+# include "./lib/MLX42/include/MLX42/MLX42.h"
 
 //structs
 typedef struct s_complex

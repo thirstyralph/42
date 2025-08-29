@@ -5,72 +5,58 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/29 04:12:14 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/29 04:12:31 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/29 14:29:59 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/29 14:30:00 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../fractol.h"
+// Written by Bruh
+
+#include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
+#include "MLX42/MLX42.h"
+#define WIDTH 256
+#define HEIGHT 256
 
-
-
-int	main(int argc, char *argv[])
+// Exit the program as failure.
+static void ft_error(void)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-		int		i;
-
-
-	//actual code that I want to use
-	//the parameters are parsed
-	parse(argc, argv);
-	//first I have to merge my display struct and the one here
-	// one of two display loop functions is choosen depending on the parameters
-	// if J, julia_loop
-	// if M, Mandelbrot_loop
-	// create a screen window
-	// 
-	
-	i = 0;
-	//create a screen window
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	img.img = mlx_new_image(mlx, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
-	/*
-		operation:
-			1. decide which loop to use
-			2 start the loop
-			in the loop:
-				1. para cada pixel de la imagen, calcula el numero de iteraciones
-				2. para cada numero calculado, poner ese valor en la array de pantalla
-			necesito:
-			- funcion mandelbrot (creo que ya la tengo)
-			- funcion asign_color(int iter, int color)
-			- a function for each color scheme??
-			- loop_mandelbrot
-			- loop julia
-				que hacen los loops?
-				- toman el zoom
-				- toman el size de la pantalla
-				- tengo que tener en cuenta el centro tambien
-				- para cada posicion(pixel), calculas el numero de iteraciones para
-					el centro, ajustando con el zoom, fd
-				
-		- funcion que para cada pixel calcule la posicion x e y, ejecute mandelbrot
-			y asigne ese valor a un color 
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	while (i <= 1080)
-	{
-		printf(" %d", i);
-		my_mlx_pixel_put(&img, i, i, i);
-		mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-		i++;
-	}
-	mlx_loop(mlx);
+	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
+	exit(EXIT_FAILURE);
 }
 
+// Print the window width and height.
+static void ft_hook(void* param)
+{
+	const mlx_t* mlx = param;
+
+	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
+}
+
+int32_t	main(void)
+{
+
+	// MLX allows you to define its core behaviour before startup.
+	mlx_set_setting(MLX_MAXIMIZED, true);
+	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
+	if (!mlx)
+		ft_error();
+
+	/* Do stuff */
+
+	// Create and display the image.
+	mlx_image_t* img = mlx_new_image(mlx, 256, 256);
+	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
+		ft_error();
+
+	// Even after the image is being displayed, we can still modify the buffer.
+	mlx_put_pixel(img, 0, 0, 0xFF0000FF);
+
+	// Register a hook and pass mlx as an optional param.
+	// NOTE: Do this before calling mlx_loop!
+	mlx_loop_hook(mlx, ft_hook, mlx);
+	mlx_loop(mlx);
+	mlx_terminate(mlx);
+	return (EXIT_SUCCESS);
+}

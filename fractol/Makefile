@@ -1,65 +1,36 @@
-# ---------------- Configuración ----------------
-NAME      = fract-ol
-CC        = cc
-RM        = rm -rf
+NAME		:= Game
+CFLAGS		:= 
+LIBMLX		:= ./lib/MLX42
 
-# Flags de compilación y preprocesador
-CFLAGS		= -Wall -Wextra -Werror
-CPPFLAGS	= -I. -Iinclude -Iminilibx-linux
+LIBLIBFT := ./lib/libft/libft.a
+HEADERS		:= -I ./include -I $(LIBMLX)/include
+LIBS		:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+SRCS		:= $(shell find ./src -iname "*.c")
+OBJS		:= ${SRCS:.c=.o}
 
-LIBFTPATH	= include/libft
-LIBFTLIB	= $(LIBFTPATH)/libft.a
+all: libft ft_printf libmlx $(NAME)
 
-# MiniLibX (Linux)
-MLXPATH	= minilibx-linux
-MLXLIB	= $(MLXPATH)/libmlx_Linux.a
+libmlx:
+		@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+libft:
+		make -C ./lib/libft
 
-# Enlazado
-LDFLAGS   = 
-LDLIBS    = -lXext -lX11 -lm -lz
+ft_printf:
+		make -C ./lib/ft_printf
 
-# Fuentes y objetos
-SRCS	= $(wildcard src/*.c)
-OBJS	= $(SRCS:src/%.c=obj/%.o)
-DEPS	= $(OBJS:.o=.d)
+%.o: %.c
+		@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
-# ---------------- Targets ----------------
-all: $(NAME)
+$(NAME): $(OBJS)
+		@$(CC) $(OBJS) $(LIBS) $(LIBLIBFT) $(HEADERS) -o $(NAME)
 
-# Crear ejecutable
-$(NAME): $(MLXLIB) $(LIBFTLIB) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(MLXLIB) $(LIBFTLIB) $(LDLIBS) -o $@
-	@echo "\nfract-ol compiled\n"
-
-$(LIBFTLIB):
-	$(MAKE) -C $(LIBFTPATH)
-
-# Compilar MiniLibX primero
-$(MLXLIB):
-	$(MAKE) -C $(MLXPATH)
-
-# Carpeta de objetos
-obj:
-	mkdir -p obj
-
-# Compilación de objetos (con headers)
-obj/%.o: src/%.c | obj
-	$(CC) $(CPPFLAGS) $(CFLAGS) -MMD -MP -c $< -o $@
-
-# Dependencias automáticas
--include $(DEPS)
-
-# Limpiar objetos
 clean:
-	$(RM) obj
-	$(MAKE) -C $(MLXPATH) clean
+		@rm -rf $(OBJS)
+			@rm -rf $(LIBMLX)/build
 
-# Limpiar todo
 fclean: clean
-	$(RM) $(NAME)
+		@rm -rf $(NAME)
 
-# Reconstrucción completa
-re: fclean all
+re: clean all
 
-.PHONY: all clean fclean re
-
+.PHONY: all, clean, fclean, re, libmlx
