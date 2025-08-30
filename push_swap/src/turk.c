@@ -24,6 +24,8 @@ void	turk(t_stack *a, t_stack *b)
 {
 	int	*cost;
 
+	if (a->arr[a->top] > a->arr[a->top - 1])
+		swap(a);
 	move_all_but_three(a, b);
 	sort_three(a);
 	while (b->top >= 0)

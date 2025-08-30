@@ -14,7 +14,7 @@
 
 void	error(void)
 {
-	ft_printf("Error\n");
+	write(1, "Error\n", 6);
 	exit(1);
 }
 
@@ -27,11 +27,11 @@ int	*arrtoi(int argc, char *argv[])
 	result = malloc(sizeof(int) * (argc - 1));
 	if (!result)
 		return (NULL);
-	i = argc - 1; //ponle strlen para controlar el longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong
+	i = argc - 1;
 	while (i > 0)
 	{
 		tmp = ft_strtol(argv[i]);
-		if (tmp <= INT_MAX && tmp >= INT_MIN)
+		if (tmp <= INT_MAX && tmp >= INT_MIN && (ft_strlen(argv[i]) < 10))
 			result[argc - 1 - i] = (int)tmp;
 		else
 		{
