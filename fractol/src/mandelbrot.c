@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/31 18:33:01 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/31 18:33:45 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../fractol.h"
 
 /*
@@ -27,7 +39,8 @@ int	mandelbrot(t_complex c, int limit)
 	return (1);
 }
 
-void	mandelbrot_loop(t_data *data, t_conf config)
+/* This will probably get deleted
+void	mandelbrot_loop(mlx *data, t_conf config)
 {
 	int			window_width;
 	int			window_height;
@@ -42,6 +55,4 @@ void	mandelbrot_loop(t_data *data, t_conf config)
 	//
 	while (
 }
-
-
-
+*/

@@ -1,43 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   draw_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/31 20:34:48 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/31 20:34:49 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/08/31 21:07:43 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/31 21:18:08 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
-
-void	use_msg(void)
+void	draw_frame(mlx_t mlx)
 {
-	(void)!write(1, "use\n", 4);
-	(void)!write(1, "Sets: 1(Mandelbrot), 2(Julia)\n", 30);
-}
-
-t_conf	parse(int argc, char *argv[])
-{
-	t_conf	r;
-
-	if (argc == 2)
-	{
-		if (argv[1][0] == '1')
-			r.set = 1;
-		else if (argv[1][0] == '2')
-			r.set = 2;
-		else
-		{
-			use_msg();
-			exit(0);
-		}
-	}
-	else
-	{
-		use_msg();
-		exit(0);
-	}
-	return (r);
+	//declara x e y == 0
+	//para cada valor de x e y, calcular su posicion en el plano complejo
+	//para cada valor de x e y, calcular su offset
+	//aplicar la funcion que corresponda
+	//siguiente x e y
+	//y ya esta??
 }

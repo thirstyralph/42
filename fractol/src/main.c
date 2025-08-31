@@ -1,14 +1,17 @@
-#include "../fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/31 18:41:34 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/08/31 21:03:29 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	my_scroll(double xdelta, double ydelta, void* param)
-{
-	(void)param;
-	(void)xdelta;
-	if (ydelta > 0)
-		write(0, "up\n", 3);
-	else if (ydelta < 0)
-		write(0, "do\n", 3);
-}
+#include "../fractol.h"
+#include <stdio.h>
 
 static void	ft_error(void)
 {
@@ -24,9 +27,10 @@ int	main(int argc, char *argv[])
 	mlx = mlx_init(WIDTH, HEIGHT, "fract-ol", true);
 	if (!mlx)
 		ft_error();
+	defaults(&conf);
 	if (conf.set == 1)
 		conf.set = 2;
-	mlx_scroll_hook(mlx, my_scroll, NULL);
+	mlx_scroll_hook(mlx, my_scroll, &conf.zoom);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (0);
