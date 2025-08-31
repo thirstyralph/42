@@ -1,13 +1,20 @@
 NAME	:= fract_ol
-CFLAGS	:= -Wextra -Wall -Werror 
-LIBMLX	:= ./lib/MLX42
+CC		:= cc
+CFLAGS	:= -Wextra -Wall -Werror -Iinclude -g
+SRC_DIR = src
+OBJ_DIR = obj
 
+LIBMLX	:= ./lib/MLX42
 HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-SRCS	:= $(shell find ./src -iname "*.c")
 OBJS	:= ${SRCS:.c=.o}
 
+SRCS	:= $(wildcard $(SRC_DIR)/*.c)
+OBJS	:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# Default target
 all: libmlx $(NAME)
+
 
 libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
@@ -15,16 +22,20 @@ libmlx:
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
+
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJS)
-	@rm -rf $(LIBMLX)/build
+	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
 	@rm -rf $(NAME)
 
-re: clean all
+re: fclean all
 
 .PHONY: all, clean, fclean, re, libmlx
