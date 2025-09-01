@@ -36,6 +36,7 @@ void	draw_frame(t_app *app)
 	int	x;
 	int	y;
 	int	it;
+//limpiar el caos de las llamadas a struct
 
 	y = 0;
 	x = 0;
@@ -45,7 +46,8 @@ void	draw_frame(t_app *app)
 	{
 		it = mandelbrot(pixel_to_complex(x, y, app->conf), app->conf->max);
 		mlx_put_pixel(app->img, x, y, color(it, app->conf->max));
-		next_pixel(&x, &y, *app->conf);
+		next_pixel(&x, &y, *app->conf);// deberia de cambiar esto, poner una mia
+
 	}
 	mlx_image_to_window(app->mlx, app->img, 0, 0);
 }
