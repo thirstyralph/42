@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:30:50 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/31 18:31:14 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/01 17:38:47 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_complex	add(t_complex a, t_complex b)
 	t_complex	r;
 
 	r.re = a.re + b.re;
-	r.im = a.im + a.im;
+	r.im = a.im + b.im;
 	return (r);
 }
 

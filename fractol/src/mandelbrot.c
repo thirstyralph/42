@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:33:01 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/31 18:33:45 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/01 17:17:00 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	mandelbrot(t_complex c, int limit)
 		tmp = add(mul(tmp, tmp), c);
 		i++;
 	}
-	return (1);
+	return (i);
 }
 
 /* This will probably get deleted

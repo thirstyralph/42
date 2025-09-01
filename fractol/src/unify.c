@@ -1,45 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   unify.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/31 20:34:48 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/01 10:41:28 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/09/01 12:32:08 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/09/01 13:15:53 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void	use_msg(void)
+t_app	unify(mlx_t *mlx, mlx_image_t **img, t_conf *conf)
 {
-	(void)!write(1, "use\n", 4);
-	(void)!write(1, "Sets: 1(Mandelbrot), 2(Julia)\n", 30);
-}
+	t_app	r;
 
-t_conf	parse(int argc, char *argv[])
-{
-	//julia set parameters not implemented!!! FIX
-	//shitty parse, REWRITE
-	t_conf	r;
-
-	if (argc == 2)
-	{
-		if (argv[1][0] == '1')
-			r.set = 1;
-		else if (argv[1][0] == '2')
-			r.set = 2;
-		else
-		{
-			use_msg();
-			exit(0);
-		}
-	}
-	else
-	{
-		use_msg();
-		exit(0);
-	}
+	r.mlx = mlx;
+	r.img = *img;
+	r.conf = conf;
 	return (r);
 }

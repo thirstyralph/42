@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:41:34 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/08/31 21:03:29 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/01 16:56:13 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,43 @@ static void	ft_error(void)
 	exit(EXIT_FAILURE);
 }
 
+//	mlx_init
+//	mlx_new_image, create new img
+//	maybe I have to create a structure with EVERYTHING, that is:
+//		- MLX_T struct
+//		- image
+//		- pointer to the fractal function to use
+//	set up hooks
+//		[ ] scroll hook
+//		[ ] close hook
+//		[ ] resize hook --Maybe it'd be better to ignore this one for now--
+//		- only one hook function? or one per action?		
+//		- how to make sure it renders once per action?
+//		- how to make it render the correct fractal each time?
+//		  maybe a wrapper struct with a pointer function?
+//		- I have to make callbacks file for callback funcitons
+//
+//	start loop
+//	terminate
 int	main(int argc, char *argv[])
 {
-	mlx_t	*mlx;
-	t_conf	conf;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	t_conf		conf;
+	t_app		app;
 
 	conf = parse(argc, argv);
-	mlx = mlx_init(WIDTH, HEIGHT, "fract-ol", true);
+	defaults(&conf);
+	mlx = mlx_init(conf.x_limit, conf.y_limit, "fract-ol", true);
 	if (!mlx)
 		ft_error();
-	defaults(&conf);
 	if (conf.set == 1)
 		conf.set = 2;
-	mlx_scroll_hook(mlx, my_scroll, &conf.zoom);
+	app = unify(mlx, &img, &conf);
+	mlx_key_hook(mlx, key_hook, &app);
+	mlx_close_hook(mlx, my_close, &app);
+	mlx_scroll_hook(mlx, my_scroll, &app);
+	draw_frame(&app);
 	mlx_loop(mlx);
-	mlx_terminate(mlx);
 	return (0);
 }
