@@ -6,52 +6,51 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:05:33 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/01 17:42:54 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/02 23:27:02 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 /*
-void	next_pixel(int *x, int *y, t_conf config)
+void	put_pixel(mlx_image_t *img, int x, int y, int color)
 {
-	if (*x == config.x_limit -1)
-	{
-		*x = 0;
-		(*y)++;
-	}
-	else
-		(*x)++;
+	int	pos;
+
+	pos = sizeof(char) * (2 * x + 4 * img->width * y);
+	img->pixels[pos] = color;
 }
 */
-/* PROBLEMS:
-	[ ] add frame render parameters to avoid pixel_to_complex ineficient operations
-	[ ] 
+
+/*
+ PROBLEMS:
+	[ ] add frame render parameters to avoid pixel_to_complex 
+	ineficient operations
+	[ ] too long
+	[ ] overall just terrible, rewrite
+*/
 void	draw_frame(t_app *app)
 {
 	int			x;
 	int			y;
-	int			it;
 	mlx_t		*mlx;
-	t_conf		*conf;
-	mlx_image_t	*img;
+	t_complex	pos;
 
-	y = 0;
-	x = 0;
+	y = -1;
+	x = -1;
 	mlx = app->mlx;
-	conf = app->conf;
-	img = app->img;
-	mlx_delete_image(mlx, img);
-	img = mlx_new_image(mlx, conf->x_limit, app->conf->y_limit);
-	while (y < conf->y_limit)
+//	app->img = mlx_new_image(mlx, app->conf->x_limit, app->conf->y_limit);
+	while (++y < app->conf->y_limit)
 	{
+		pos.im = ((y - (app->conf->y_limit / 2)) * app->conf->zoom)
+			+ app->conf->center.im;
 		x = 0;
-		while(x < conf->x_limit)
+		while (++x < app->conf->x_limit)
 		{
-			it = mandelbrot(pixel_to_complex(x, y, conf), app->conf->max);
-			mlx_put_pixel(img, x, y, color(it, conf->max));
-			x++;
+			pos.re = ((x - (app->conf->x_limit / 2)) * app->conf->zoom)
+				+ app->conf->center.re;
+			mlx_put_pixel(app->img, x, y, color(mandelbrot(pos, app->conf->max),
+					app->conf->max));
 		}
-		y++;
 	}
-	mlx_image_to_window(mlx, img, 0, 0);
+	return ;
 }

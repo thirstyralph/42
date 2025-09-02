@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:25:04 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/01 19:17:23 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/03 00:08:13 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 //		for Esc too
 //	- Resize ==I'll skip it for now==
 
-// FIX: Zoom becomes negative and mirrors the set
 void	my_scroll(double xdelta, double ydelta, void *param)
 {
 	t_app	*app;
@@ -27,9 +26,15 @@ void	my_scroll(double xdelta, double ydelta, void *param)
 	(void)xdelta;
 	app = (t_app *)param;
 	if (ydelta > 0)
-		app->conf->zoom += 0.10;
+	{
+		app->conf->zoom *= 1.1;
+		app->conf->max *= 0.9090909;
+	}
 	else if (ydelta < 0)
-		app->conf->zoom -= 0.10;
+	{
+		app->conf->zoom *= 0.90;
+		app->conf->max *= 1.1;
+	}
 	draw_frame(app);
 }
 
@@ -52,17 +57,20 @@ void	my_close(void *param)
 
 	app = (t_app *)param;
 	mlx_delete_image(app->mlx, app->img);
-	printf("image deleted in close\n");
 	mlx_terminate(app->mlx);
-	printf("hay que cerrar, que ya es tarde\n");
 	exit(0);
 }
 
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-	{
-		printf("BOMBOCLAAAT\n");
 		my_close(param);
-	}
+}
+
+void	refresh(void *param)
+{
+	t_app	*app;
+
+	app = (t_app *)param;
+	mlx_image_to_window(app->mlx, app->img, 0, 0);
 }

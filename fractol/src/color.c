@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:59:34 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/01 17:35:15 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/03 00:10:54 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,25 @@ int	color(int iter, int max)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 */
-
-int color(int iter, int max)
+int	color(int iter, int max)
 {
-    if (iter == max)
-        return 0x000000FF;  // negro
-    else
-        return 0xFF0000FF - (iter * 0x00010000 / max); // De rojo a negro
+	if (iter == max)
+		return (0x000000FF); // black for inside set
+
+	double	t = (double)iter / max;
+	unsigned char	r = (unsigned char)(40 * (1 - t) * t * t * t * 255);
+	unsigned char	g = (unsigned char)(40 * (1 - t) * (1 - t) * t * t * 255);
+	unsigned char	b = (unsigned char)(40 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	return (r << 24 | g << 16 | b << 8 | 0xFF);
 }
 
+/*
+
+int	color(int iter, int max)
+{
+	if (iter == max)
+		return (0x000000FF);
+	else
+		return ((double)iter / ((double)max) * 0x0F120BAA);
+}
+*/

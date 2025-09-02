@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:41:34 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/01 16:56:13 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/02 23:28:20 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,17 @@ int	main(int argc, char *argv[])
 
 	conf = parse(argc, argv);
 	defaults(&conf);
-	mlx = mlx_init(conf.x_limit, conf.y_limit, "fract-ol", true);
+	mlx = mlx_init(conf.x_limit, conf.y_limit, "fract-ol", false);
 	if (!mlx)
 		ft_error();
 	if (conf.set == 1)
 		conf.set = 2;
+	img = mlx_new_image(mlx, conf.x_limit, conf.y_limit);
 	app = unify(mlx, &img, &conf);
 	mlx_key_hook(mlx, key_hook, &app);
 	mlx_close_hook(mlx, my_close, &app);
 	mlx_scroll_hook(mlx, my_scroll, &app);
+	mlx_loop_hook(mlx, refresh, &app);
 	draw_frame(&app);
 	mlx_loop(mlx);
 	return (0);
