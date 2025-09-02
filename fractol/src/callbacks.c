@@ -19,6 +19,7 @@
 //		for Esc too
 //	- Resize ==I'll skip it for now==
 
+// FIX: Zoom becomes negative and mirrors the set
 void	my_scroll(double xdelta, double ydelta, void *param)
 {
 	t_app	*app;

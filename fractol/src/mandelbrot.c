@@ -22,6 +22,7 @@
 		int limit: maximum number of operations to perform.
 	returns:
 		int: Number of iterations 
+	FIX: Figure out ways to optimize it
 */
 int	mandelbrot(t_complex c, int limit)
 {

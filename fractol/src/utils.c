@@ -24,8 +24,8 @@ void	defaults(t_conf *config)
 {
 	config->z = 1;
 	config->zoom = 1;
-	config->center.im = 0;
-	config->center.re = 0;
+	config->center.im = 0.743643887037151;
+	config->center.re = 0.743643887037151;
 	config->x_limit = WIDTH;
 	config->y_limit = HEIGHT;
 	config->max = 1000;

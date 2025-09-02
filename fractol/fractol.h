@@ -15,8 +15,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#define WIDTH	1920	
-#define HEIGHT	1080 	
+#define WIDTH	300
+#define HEIGHT	200
 
 /*
   Main MLX handle, carries important data in regards to the program.
