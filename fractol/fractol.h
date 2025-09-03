@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:15 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/01 17:41:04 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/03 11:28:13 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#define WIDTH	300
-#define HEIGHT	200
+#define WIDTH		800
+#define HEIGHT		700	
+#define ITER_MAX	70	
 
 /*
   Main MLX handle, carries important data in regards to the program.
@@ -43,13 +44,16 @@ typedef struct complex
 typedef struct config
 {
 	int			set;
-	int			z;
+
 	double		zoom;
 	int			x_limit;
 	int			y_limit;
+	t_complex	z;
 	t_complex	center;
 	int			color;
 	int			max;
+	int			x_offset;
+	int			y_offset;
 }	t_conf;
 
 typedef struct s_app
@@ -57,32 +61,37 @@ typedef struct s_app
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	t_conf		*conf;
+	void		*func;
 }	t_app;
 
 //functions
 //main.c
-int			main(int argc, char *argv[]);
+int					main(int argc, char *argv[]);
 //parse
-void		use_msg(void);
-t_conf		parse(int argc, char *argv[]);
+void				use_msg(void);
+t_conf				parse(int argc, char *argv[]);
 //complex_ops.c
-t_complex	add(t_complex a, t_complex b);
-t_complex	mul(t_complex a, t_complex b);
-double		mod_squared(t_complex z);
+t_complex			add(t_complex a, t_complex b);
+t_complex			mul(t_complex a, t_complex b);
+double				mod_squared(t_complex z);
 //mandelbrot.c
-int			mandelbrot(t_complex c, int limit);
+int					mandelbrot(t_complex c, int limit);
 //utils
-uint32_t	offset(int x, int y, mlx_t data);
-void		defaults(t_conf *config);
-t_complex	pixel_to_complex(int x, int y, t_conf *config);
+uint32_t			offset(int x, int y, mlx_t data);
+void				defaults(t_conf *config);
+t_complex			pixel_to_complex(int x, int y, double zoom);
 //callbacks.c
-void		my_scroll(double xdelta, double ydelta, void *param);
-void		my_resize(int32_t width, int32_t height, void *param);
-void		my_close(void *param);
-void		key_hook(mlx_key_data_t keydata, void *param);
+void				my_scroll(double xdelta, double ydelta, void *param);
+void				my_resize(int32_t width, int32_t height, void *param);
+void				my_close(void *param);
+void				key_hook(mlx_key_data_t keydata, void *param);
+void				refresh(void *param);
 //color.c
-int			color(int iter, int limit);
+extern int			color(int iter, int limit);
 //draw_frame.c
-void		draw_frame(t_app *app);
+void				draw_frame(t_app *app);
 //unify.c
-t_app		unify(mlx_t *mlx, mlx_image_t **img, t_conf *conf);
+t_app				unify(mlx_t *mlx, mlx_image_t **img, t_conf *conf);
+//ft_atoi.c
+int					ft_isdigit(char c);
+int					ft_atoi(const char *nptr);

@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 10:25:04 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/03 00:08:13 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/03 16:25:24 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	my_scroll(double xdelta, double ydelta, void *param)
 	if (ydelta > 0)
 	{
 		app->conf->zoom *= 1.1;
-		app->conf->max *= 0.9090909;
+		app->conf->max *= 0.7;
 	}
 	else if (ydelta < 0)
 	{
 		app->conf->zoom *= 0.90;
-		app->conf->max *= 1.1;
+		app->conf->max *= 1.2;
 	}
 	draw_frame(app);
 }
@@ -63,8 +63,20 @@ void	my_close(void *param)
 
 void	key_hook(mlx_key_data_t keydata, void *param)
 {
+	t_app	*app;
+
+	app = (t_app *)param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		my_close(param);
+	else if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
+		app->conf->center.im -= 10 * app->conf->zoom;
+	else if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
+		app->conf->center.im += 10 * app->conf->zoom;
+	else if (keydata.key == MLX_KEY_LEFT && keydata.action == MLX_PRESS)
+		app->conf->center.re -= 10 * app->conf->zoom;
+	else if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
+		app->conf->center.re += 10 * app->conf->zoom;
+	draw_frame(app);
 }
 
 void	refresh(void *param)

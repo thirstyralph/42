@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 17:05:33 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/02 23:27:02 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/03 10:44:29 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	draw_frame(t_app *app)
 	y = -1;
 	x = -1;
 	mlx = app->mlx;
-//	app->img = mlx_new_image(mlx, app->conf->x_limit, app->conf->y_limit);
 	while (++y < app->conf->y_limit)
 	{
 		pos.im = ((y - (app->conf->y_limit / 2)) * app->conf->zoom)
