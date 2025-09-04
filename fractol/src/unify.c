@@ -19,5 +19,9 @@ t_app	unify(mlx_t *mlx, mlx_image_t **img, t_conf *conf)
 	r.mlx = mlx;
 	r.img = *img;
 	r.conf = conf;
+	if (conf->set == 1)
+		r.func = mandelbrot;
+	else
+		r.func = julia;
 	return (r);
 }

@@ -1,0 +1,123 @@
+#include "../fractol.h"
+
+double	ft_atod(char *s)
+{
+	double	r;
+	double	f;
+	double	d;
+	int		sign;
+
+	r = 0;
+	sign = 1;
+	while (*s == ' ' || (*s >= 9 && *s <= 13))
+		s++;
+	if (*s == '-' || *s == '+')
+	{
+		if (*s == '-')
+			sign = -1;
+		s++;
+	}
+	while (*s >= '0' && *s <= '9')
+		r = r * 10 + (*s++ - '0');
+	if (*s == '.')
+	{
+		s++;
+		f = 0.1;
+		while (*s >= '0' && *s <= '9')
+			r += (*s++ - '0') * f, f /= 10;
+	}
+	return (r * sign);
+}
+
+
+
+/*
+
+double ft_atod(char *str)
+{
+    double result = 0.0;
+    double sign = 1.0;
+    double frac = 0.0;
+    double divisor = 10.0;
+
+    while (*str == ' ' || *str == '\t' || *str == '\n'
+           || *str == '\v' || *str == '\f' || *str == '\r')
+        str++;
+
+    if (*str == '+' || *str == '-')
+    {
+        if (*str == '-')
+            sign = -1.0;
+        str++;
+    }
+    while (*str >= '0' && *str <= '9')
+        result = result * 10.0 + (*str++ - '0');
+    if (*str == '.')
+    {
+        str++;
+        while (*str >= '0' && *str <= '9')
+            frac += (*str++ - '0') / divisor, divisor *= 10.0;
+    }
+    return (sign * (result + frac));
+}
+
+*/
+
+
+
+
+
+
+
+
+
+/*
+double	signer(char *str)
+{
+	if (str[0] == '-')
+		return (-1.0);
+	return (1.0);
+}
+
+double	integer_part(char *str, int dot_pos)
+{
+	double	r;
+	double	mult;
+
+	mult = 1.0;
+	r = 0.0;
+	while (dot_pos >= 0 && ft_isdigit(str[dot_pos]))
+	{
+		r += ((str[dot_pos] - '0') * mult);
+		mult *= 10.0;
+		dot_pos--;
+	}
+	return (r);
+}
+
+double	ft_atod(char *str)
+{
+	double	sign;
+	double	mult;
+	double	r;
+	int		i;
+	int		j;
+
+	i = 0;
+	mult = 1.0;
+	r = 0.0;
+	sign = signer(str);
+	if (sign == -1.0)
+		i++;
+	while (str[i] != '.' && str[i])
+		i++;
+	j = i;
+	r += integer_part(str, i);
+	while (str[++j])
+	{
+		mult /= 10.0;
+		r += ((str[j] - '0') * mult);
+	}
+	return (r * sign);
+}
+*/

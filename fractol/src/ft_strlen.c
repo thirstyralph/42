@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ranavarr <ranavarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 18:13:02 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/03 11:27:19 by ranavarr         ###   ########.fr       */
+/*   Created: 2024/12/26 21:39:36 by ranavarr          #+#    #+#             */
+/*   Updated: 2024/12/30 16:03:27 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../fractol.h"
-
-/*
- * Zn = Zn-1^2 + c where c is constant and Z0 is the pixel
- */
-int	julia(t_complex z, t_complex c, int limit)
+int	ft_strlen(const char *s)
 {
-	int			i;
+	int	len;
 
-	i = 0;
-	while (mod_squared(z) <= 4 && i < limit)
-	{
-		z = add(mul(z, z), c);
-		i++;
-	}
-	return (i);
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
 }

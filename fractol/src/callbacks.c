@@ -28,28 +28,13 @@ void	my_scroll(double xdelta, double ydelta, void *param)
 	if (ydelta > 0)
 	{
 		app->conf->zoom *= 1.1;
-		app->conf->max *= 0.7;
 	}
 	else if (ydelta < 0)
 	{
 		app->conf->zoom *= 0.90;
-		app->conf->max *= 1.2;
 	}
 	draw_frame(app);
 }
-
-/* let's just not do this for now
-void	my_resize(int32_t width, int32_t height, void *param)
-{
-	t_app	*app;
-
-	app = (t_app *)param;
-	app->conf->x_limit = width;
-	app->conf->y_limit = height;
-	draw_frame(&app->img, app->mlx, *app->conf);
-	printf("w = %d, h = %d\n", width, height);
-}
-*/
 
 void	my_close(void *param)
 {

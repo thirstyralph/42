@@ -12,7 +12,7 @@
 
 #include "../fractol.h"
 /*
-int	color(int iter, int max)
+inline int	color(int iter, int max)
 {
 	unsigned char	r;
 	unsigned char	g;
@@ -30,25 +30,29 @@ int	color(int iter, int max)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 */
+
 inline int	color(int iter, int max)
 {
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	double			t;
+
 	if (iter == max)
 		return (0x000000FF);
-
-	double	t = (double)iter / max;
-	unsigned char	r = (unsigned char)(40 * (1 - t) * t * t * t * 255);
-	unsigned char	g = (unsigned char)(40 * (1 - t) * (1 - t) * t * t * 255);
-	unsigned char	b = (unsigned char)(40 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+	t = (double)iter / max;
+	r = (unsigned char)(40 * (1 - t) * t * t * t * 255);
+	g = (unsigned char)(40 * (1 - t) * (1 - t) * t * t * 255);
+	b = (unsigned char)(40 * (1 - t) * (1 - t) * (1 - t) * t * 255);
 	return (r << 24 | g << 16 | b << 8 | 0xFF);
 }
 
 /*
-
-int	color(int iter, int max)
+inline int	color(int iter, int max)
 {
 	if (iter == max)
 		return (0x000000FF);
 	else
-		return ((double)iter / ((double)max) * 0x0F120BAA);
+		return ((double)iter / ((double)max) * 0x4F120900);
 }
 */

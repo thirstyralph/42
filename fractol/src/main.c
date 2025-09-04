@@ -48,11 +48,8 @@ int	main(int argc, char *argv[])
 	mlx = mlx_init(conf.x_limit, conf.y_limit, "fract-ol", false);
 	if (!mlx)
 		ft_error();
-	if (conf.set == 1)
-		conf.set = 2;
 	img = mlx_new_image(mlx, conf.x_limit, conf.y_limit);
 	app = unify(mlx, &img, &conf);
-	app->func = &mandelbrot;
 	mlx_key_hook(mlx, key_hook, &app);
 	mlx_close_hook(mlx, my_close, &app);
 	mlx_scroll_hook(mlx, my_scroll, &app);
