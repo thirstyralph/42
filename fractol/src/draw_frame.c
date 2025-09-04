@@ -32,12 +32,10 @@ void	draw_frame(t_app *app)
 {
 	int			x;
 	int			y;
-	mlx_t		*mlx;
 	t_complex	pos;
 
 	y = -1;
 	x = -1;
-	mlx = app->mlx;
 	while (++y < app->conf->y_limit)
 	{
 		pos.im = ((y - (app->conf->y_limit / 2)) * app->conf->zoom)
@@ -47,7 +45,7 @@ void	draw_frame(t_app *app)
 		{
 			pos.re = ((x - (app->conf->x_limit / 2)) * app->conf->zoom)
 				+ app->conf->center.re;
-			mlx_put_pixel(app->img, x, y, color(mandelbrot(pos, app->conf->max),
+			mlx_put_pixel(app->img, x, y, color(app->func(pos,app->conf->z, app->conf->max),
 					app->conf->max));
 		}
 	}

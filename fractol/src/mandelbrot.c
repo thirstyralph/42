@@ -24,11 +24,12 @@
 		int: Number of iterations 
 	FIX: Figure out ways to optimize it
 */
-int	mandelbrot(t_complex c, int limit)
+int	mandelbrot(t_complex c, t_complex z, int limit)
 {
 	t_complex	tmp;
 	int			i;
 
+	(void)z;
 	i = 0;
 	tmp.re = 0;
 	tmp.im = 0;
