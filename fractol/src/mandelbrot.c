@@ -22,7 +22,6 @@
 		int limit: maximum number of operations to perform.
 	returns:
 		int: Number of iterations 
-	FIX: Figure out ways to optimize it
 */
 int	mandelbrot(t_complex c, t_complex z, int limit)
 {
@@ -40,21 +39,3 @@ int	mandelbrot(t_complex c, t_complex z, int limit)
 	}
 	return (i);
 }
-
-/* This will probably get deleted
-void	mandelbrot_loop(mlx *data, t_conf config)
-{
-	int			window_width;
-	int			window_height;
-	double		zoom;
-	t_complex	center;
-
-	x = 0;
-	y = 0;
-	zoom = 1;
-	center.re = 0;
-	center.im = 0;
-	//
-	while (
-}
-*/

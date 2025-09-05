@@ -11,23 +11,7 @@
 /* ************************************************************************** */
 
 #include "../fractol.h"
-/*
-void	put_pixel(mlx_image_t *img, int x, int y, int color)
-{
-	int	pos;
 
-	pos = sizeof(char) * (2 * x + 4 * img->width * y);
-	img->pixels[pos] = color;
-}
-*/
-
-/*
- PROBLEMS:
-	[ ] add frame render parameters to avoid pixel_to_complex 
-	ineficient operations
-	[ ] too long
-	[ ] overall just terrible, rewrite
-*/
 void	draw_frame(t_app *app)
 {
 	int			x;

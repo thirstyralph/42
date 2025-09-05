@@ -11,25 +11,6 @@
 /* ************************************************************************** */
 
 #include "../fractol.h"
-/*
-inline int	color(int iter, int max)
-{
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	unsigned char	a;
-
-	if (iter == max)
-		return (0x000000FF);
-	else
-		return (0xFF00FFFF);
-	a = 0xFF;
-	r = (unsigned char)((255 * iter) / max);
-	g = (unsigned char)((255 * iter) / max);
-	b = (unsigned char)((255 * iter) / max);
-	return (r << 24 | g << 16 | b << 8 | a);
-}
-*/
 
 inline int	color(int iter, int max)
 {
@@ -46,13 +27,3 @@ inline int	color(int iter, int max)
 	b = (unsigned char)(40 * (1 - t) * (1 - t) * (1 - t) * t * 255);
 	return (r << 24 | g << 16 | b << 8 | 0xFF);
 }
-
-/*
-inline int	color(int iter, int max)
-{
-	if (iter == max)
-		return (0x000000FF);
-	else
-		return ((double)iter / ((double)max) * 0x4F120900);
-}
-*/

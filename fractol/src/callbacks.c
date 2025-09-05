@@ -12,13 +12,6 @@
 
 #include "../fractol.h"
 
-//	Necessary callbacks
-//	- Scroll
-//	- Close window
-//		free everything (if needed) and exit
-//		for Esc too
-//	- Resize ==I'll skip it for now==
-
 void	my_scroll(double xdelta, double ydelta, void *param)
 {
 	t_app	*app;
@@ -27,11 +20,11 @@ void	my_scroll(double xdelta, double ydelta, void *param)
 	app = (t_app *)param;
 	if (ydelta > 0)
 	{
-		app->conf->zoom *= 1.1;
+		app->conf->zoom *= 0.8;
 	}
 	else if (ydelta < 0)
 	{
-		app->conf->zoom *= 0.90;
+		app->conf->zoom *= 1.20;
 	}
 	draw_frame(app);
 }

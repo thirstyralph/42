@@ -18,24 +18,6 @@ static void	ft_error(void)
 	exit(EXIT_FAILURE);
 }
 
-//	mlx_init
-//	mlx_new_image, create new img
-//	maybe I have to create a structure with EVERYTHING, that is:
-//		- MLX_T struct
-//		- image
-//		- pointer to the fractal function to use
-//	set up hooks
-//		[ ] scroll hook
-//		[ ] close hook
-//		[ ] resize hook --Maybe it'd be better to ignore this one for now--
-//		- only one hook function? or one per action?		
-//		- how to make sure it renders once per action?
-//		- how to make it render the correct fractal each time?
-//		  maybe a wrapper struct with a pointer function?
-//		- I have to make callbacks file for callback funcitons
-//
-//	start loop
-//	terminate
 int	main(int argc, char *argv[])
 {
 	mlx_t		*mlx;

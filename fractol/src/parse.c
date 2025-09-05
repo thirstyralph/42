@@ -5,7 +5,7 @@ int	use_msg(void)
 	(void)!write(1, "use\n", 4);
 	(void)!write(1, "Sets: 1(Mandelbrot), 2(Julia)\n", 30);
 	(void)!write(1, "(Julia only) set, c(re) c(im) ", 30);
-	(void)!write(1, "| c range = (1 - 2)\n", 20);
+	(void)!write(1, "| c range = (2 - 2)\n", 20);
 	return (1);
 }
 
@@ -36,14 +36,6 @@ int	range(double max, double min, double n)
 		return (0);
 }
 
-/*
-	checks:
-		- first argument must be either 1 or 2
-		- if it is 1, there are no more args
-		- if it is 2, there must be two more
-			both of those arguments must be valid doubles
-			and in a specific range
-*/
 t_conf	parse(int argc, char *argv[])
 {
 	t_conf		r;
