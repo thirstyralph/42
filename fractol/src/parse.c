@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/06 13:22:12 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/09/06 13:25:50 by ranavarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../fractol.h"
 
 int	use_msg(void)
 {
-	(void)!write(1, "use\n", 4);
+	(void)!write(1, "use:\n", 5);
 	(void)!write(1, "Sets: 1(Mandelbrot), 2(Julia)\n", 30);
-	(void)!write(1, "(Julia only) set, c(re) c(im) ", 30);
+	(void)!write(1, "(Julia only): c (re) c(im) ", 27);
 	(void)!write(1, "| c range = (2 - 2)\n", 20);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 18:28:15 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/03 11:28:13 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/06 13:07:27 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <math.h>
 #define WIDTH		900
 #define HEIGHT		800
-#define ITER_MAX	50
+#define ITER_MAX	150
 
 /*
 typedef struct mlx
