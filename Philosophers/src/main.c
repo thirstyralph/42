@@ -14,20 +14,34 @@ typedef struct s_conf {
 	uint32_t	limit;	// max number of times for the philosophers to eat
 }	t_conf;
 
+/*
 void	notification(uint32_t philo, uint32_t action)
 {
 		printf("polla");
 	//timestamp_in_ms philo has done this action or another;
 
 }
+*/
+
+long unsigned	interval(struct timeval start)
+{
+	long unsigned	zero;
+	struct timeval	end;
+
+
+	zero = start.tv_sec * 1000 + start.tv_usec;
+	gettimeofday(&end, NULL);
+	return (((end.tv_sec * 1000) + end.tv_usec) - zero);
+}
+
 
 int	main(void)
 {
 	struct timeval	start;
 
 	gettimeofday(&start, NULL);
-	printf("son las %lu.", start.tv_sec);
-	printf("%lu en punto\n", start.tv_usec);
+	usleep(12345);
+	printf("hemos dormido por %ld milisegundos\n", interval(start));
 	return (0);
 }
 /*
