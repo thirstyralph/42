@@ -3,7 +3,6 @@
 /*
 void	notification(uint32_t philo, uint32_t action)
 {
-		printf("polla");
 	//timestamp_in_ms philo has done this action or another;
 
 }
@@ -23,11 +22,22 @@ long unsigned	interval(struct timeval start)
 
 int	main(void)
 {
-	pthread_t		*threads;
+	uint32_t	i;
+	uint32_t	n;
+	pthread_t	*threads;
 
-	threads = spawn_threads(3);
+
+	n = 16;
+	threads = spawn_threads(n);
 	if (!threads)
 		return (1);
+	i = 0;
+	while (i < n)
+	{
+		pthread_join(threads[i], NULL);
+		i++;
+	}
+	free(threads);
 	return (0);
 }
 /*

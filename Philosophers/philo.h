@@ -19,7 +19,9 @@ typedef struct s_conf {
 }	t_conf;
 
 //routine.c
-void		*_philo_routine(void *arg);
-//thread_management.c
-pthread_t	*spawn_threads(uint32_t n);
+void			*_philo_routine(void *arg);
+//spawn_threads.c
+pthread_t		*spawn_threads(uint32_t n);
+//main.c
+long unsigned	interval(struct timeval start);
 #endif
