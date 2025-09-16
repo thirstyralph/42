@@ -17,7 +17,6 @@ pthread_t *spawn_threads(uint32_t n)
 	while(i < n)
 	{
 		tmp = malloc(sizeof(int));
-		printf("a tread has been born\n");
 		*tmp = i;
 		pthread_create(&r[i], NULL, _philo_routine, (void *)tmp);
 		i++;

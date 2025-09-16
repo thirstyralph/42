@@ -20,19 +20,19 @@ long unsigned	interval(struct timeval start)
 }
 
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
 	uint32_t	i;
-	uint32_t	n;
+	t_conf		conf;
 	pthread_t	*threads;
 
 
-	n = 16;
-	threads = spawn_threads(n);
+	conf = parse(argc, argv);
+	threads = spawn_threads(conf.n);
 	if (!threads)
 		return (1);
 	i = 0;
-	while (i < n)
+	while (i < conf.n)
 	{
 		pthread_join(threads[i], NULL);
 		i++;
