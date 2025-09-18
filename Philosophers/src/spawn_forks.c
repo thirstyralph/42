@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   spawn_forks.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 18:18:57 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/17 18:19:09 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/09/17 19:10:33 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/09/17 20:20:55 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-void	*_philo_routine(void *arg)
+pthread_mutex_t	*spawn_forks(uint32_t n)
 {
-	int	*i;
+	uint32_t		i;
+	pthread_mutex_t	*r;
 
-	i = (int *)arg;
-	printf("hread number %d has  pthred ID %lu\n",*i, pthread_self());
-	printf("Philosopher %d is thinking", *i);
-	sleep(1);
-	printf("Philosopher %d is eating", *i);
-	sleep(1);
-	printf("Philosopher %d is sleeping", *i);
-	sleep(1);
-	free(i);
-	return (NULL);
+	r = malloc(sizeof(pthread_mutex_t));
+	if (!r)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		if (pthread_mutex_init(&r[i], NULL) != 0)
+		{
+			free(r);
+			return (NULL);
+		}
+		i++;
+	}
+	return (r);
 }

@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 18:18:57 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/17 18:19:09 by ranavarr         ###   ########.fr       */
+/*   Created: 2025/09/17 20:24:36 by ranavarr          #+#    #+#             */
+/*   Updated: 2025/09/17 21:07:04 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-void	*_philo_routine(void *arg)
+t_app	unify(t_conf *conf, pthread_mutex_t *forks, pthread_mutex_t print)
 {
-	int	*i;
+	t_app	app;
 
-	i = (int *)arg;
-	printf("hread number %d has  pthred ID %lu\n",*i, pthread_self());
-	printf("Philosopher %d is thinking", *i);
-	sleep(1);
-	printf("Philosopher %d is eating", *i);
-	sleep(1);
-	printf("Philosopher %d is sleeping", *i);
-	sleep(1);
-	free(i);
-	return (NULL);
+	app.conf = *conf;
+	app.forks = forks;
+	app.print = print;
+	return (app);
 }
