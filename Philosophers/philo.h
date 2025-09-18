@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 18:25:03 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/17 21:23:55 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/18 11:39:19 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct s_app
 {
 	t_conf			conf;
 	struct timeval	start;
-	pthread_mutex_t	print;	
 	pthread_mutex_t	*forks;	
+	pthread_mutex_t	print;
 }	t_app;
 
 //safe_print.c

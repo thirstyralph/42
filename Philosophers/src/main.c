@@ -6,7 +6,7 @@
 /*   By: ranavarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 18:18:25 by ranavarr          #+#    #+#             */
-/*   Updated: 2025/09/17 21:26:11 by ranavarr         ###   ########.fr       */
+/*   Updated: 2025/09/18 13:20:33 by ranavarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ int	main(int argc, char *argv[])
 	t_app			app;
 	pthread_t		*threads;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	print;
 
 	conf = parse(argc, argv);
 	threads = spawn_threads(conf.n);
 	forks = spawn_forks(conf.n);
-	app = unify(
+	pthread_mutex_init(&print, NULL);
+	app = unify(&conf, forks, print);
 	if (!threads)
 		return (1);
 	i = 0;
